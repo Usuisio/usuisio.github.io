@@ -1,0 +1,264 @@
+{{ define "head" }}
+<style>
+	:root {
+		--paper: #f7f3e8;
+		--ink: #2e3a52;
+		--red: #e05a45;
+		--pink: #e0679a;
+		--cyan: #4aa3b8;
+		--gold: #cf9d3c;
+		--green: #6a9e63;
+		--hilite: #f2d94f;
+		--sub: rgba(46, 58, 82, 0.62);
+	}
+	* { margin: 0; padding: 0; box-sizing: border-box; }
+	body {
+		background-color: var(--paper);
+		background-image: radial-gradient(rgba(46, 58, 82, 0.14) 1px, transparent 1px);
+		background-size: 26px 26px;
+		color: var(--ink);
+		font-family: "BIZ UDPGothic", "Yu Gothic UI", "Hiragino Sans", sans-serif;
+		line-height: 1.9;
+		padding: 12px;
+	}
+	.frame {
+		border: 2px solid var(--ink);
+		max-width: 60rem;
+		margin: 0 auto;
+		padding: clamp(1.2rem, 4vw, 3rem);
+		position: relative;
+	}
+	.frame::before {
+		content: "";
+		position: absolute;
+		inset: 6px;
+		border: 1px solid rgba(46, 58, 82, 0.35);
+		pointer-events: none;
+	}
+	a { color: var(--ink); }
+	img { max-width: 100%; height: auto; display: block; }
+	mark {
+		background: linear-gradient(transparent 55%, var(--hilite) 55%);
+		color: inherit;
+		padding: 0 0.1em;
+	}
+
+	/* ---- header ---- */
+	.top {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		gap: 1rem;
+		font-size: 0.82rem;
+		margin-bottom: 2.5rem;
+	}
+	.top .home { color: var(--sub); text-decoration: none; }
+	.top .home:hover { text-decoration: underline; }
+	.langs { display: flex; gap: 0.4rem; }
+	.langs a, .langs span {
+		border: 1px solid var(--ink);
+		padding: 0.05rem 0.7rem;
+		text-decoration: none;
+	}
+	.langs span { background: var(--hilite); border-color: var(--red); }
+
+	/* ---- hero ---- */
+	.plan-label {
+		display: inline-block;
+		font-size: 0.85rem;
+		letter-spacing: 0.15em;
+		color: var(--sub);
+		border-bottom: 2px solid var(--ink);
+		padding: 0 0.6em 0.15em 0.2em;
+		margin-bottom: 1rem;
+	}
+	.stamp {
+		display: inline-block;
+		border: 2px solid var(--red);
+		color: var(--red);
+		font-weight: bold;
+		letter-spacing: 0.25em;
+		padding: 0.1em 0.5em 0.1em 0.75em;
+		transform: rotate(-6deg);
+		margin-left: 1rem;
+		font-size: 0.9rem;
+	}
+	h1 {
+		font-size: clamp(1.7rem, 5.5vw, 2.6rem);
+		line-height: 1.35;
+		margin-bottom: 0.4rem;
+	}
+	h1 .dame { background: linear-gradient(transparent 45%, var(--hilite) 45%); }
+	.subtitle { color: var(--sub); font-size: 0.95rem; margin-bottom: 1.6rem; }
+	.tagline { margin-bottom: 1.6rem; }
+	.actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 2.2rem; }
+	.btn {
+		display: inline-block;
+		text-decoration: none;
+		font-weight: bold;
+		padding: 0.55em 1.6em;
+		border: 2px solid var(--red);
+	}
+	.btn.primary { background: var(--red); color: var(--paper); }
+	.btn.primary:hover { background: #c74a37; }
+	.btn.ghost { color: var(--red); }
+	.btn.ghost:hover { background: rgba(224, 90, 69, 0.1); }
+	.hero-shot { border: 2px solid var(--ink); }
+
+	/* ---- sections ---- */
+	section { margin-top: 3.2rem; }
+	h2 {
+		font-size: 1.15rem;
+		letter-spacing: 0.12em;
+		border-bottom: 2px solid var(--ink);
+		padding-bottom: 0.25em;
+		margin-bottom: 1.2rem;
+	}
+	h2 .no { color: var(--red); font-family: "Consolas", monospace; margin-right: 0.6em; }
+
+	/* ---- facts ---- */
+	.facts { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+	.facts th, .facts td {
+		text-align: left;
+		padding: 0.5em 0.4em;
+		border-bottom: 1px dashed rgba(46, 58, 82, 0.4);
+		vertical-align: top;
+	}
+	.facts th { color: var(--sub); font-weight: normal; white-space: nowrap; width: 8em; }
+
+	/* ---- prose ---- */
+	.prose p { margin-bottom: 1.2em; max-width: 40em; }
+
+	/* ---- gallery ---- */
+	.gallery { display: grid; gap: 1.5rem; }
+	.gallery img { border: 2px solid var(--ink); }
+	.gallery figcaption { font-size: 0.82rem; color: var(--sub); margin-top: 0.4rem; }
+
+	/* ---- steps ---- */
+	.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 1rem; }
+	.step { border: 2px solid var(--ink); padding: 1rem 1.1rem; background: rgba(255, 255, 255, 0.45); }
+	.step .n { font-family: "Consolas", monospace; font-weight: bold; font-size: 1.3rem; }
+	.step h3 { font-size: 1rem; margin: 0.2rem 0 0.5rem; }
+	.step p { font-size: 0.9rem; }
+	.step.c-green .n { color: var(--green); }
+	.step.c-cyan .n { color: var(--cyan); }
+	.step.c-pink .n { color: var(--pink); }
+
+	/* ---- faq ---- */
+	.faq dt {
+		font-weight: bold;
+		margin-top: 1.2em;
+	}
+	.faq dt::before { content: "Q. "; color: var(--red); }
+	.faq dd { margin-left: 1.5em; max-width: 38em; }
+	.faq dd::before { content: "A. "; color: var(--cyan); font-weight: bold; }
+
+	/* ---- footer ---- */
+	.dev { border: 2px solid var(--ink); padding: 1.2rem 1.4rem; background: rgba(255, 255, 255, 0.45); }
+	.dev p { max-width: 40em; }
+	.credits { font-size: 0.78rem; color: var(--sub); margin-top: 2.5rem; }
+</style>
+{{ end }}
+
+{{ define "main" }}
+{{- $p := .Params }}
+<div class="frame">
+	<header class="top">
+		<a class="home" href="{{ site.Home.Permalink }}">{{ $p.back_home }}</a>
+		<nav class="langs">
+			<span>{{ site.Language.Label }}</span>
+			{{- range .Translations }}<a href="{{ .Permalink }}">{{ .Language.Label }}</a>{{ end }}
+		</nav>
+	</header>
+
+	<div class="plan-label">{{ $p.plan_label }}</div><span class="stamp">{{ $p.stamp }}</span>
+	<h1>{{ $p.h1 | safeHTML }}</h1>
+	<p class="subtitle">{{ $p.subtitle }}</p>
+	<p class="tagline">{{ $p.tagline }}</p>
+	<div class="actions">
+		<a class="btn primary" href="{{ $p.play_url }}">▶ {{ $p.play_label }}</a>
+		<a class="btn ghost" href="{{ $p.itch_url }}">{{ $p.itch_label }}</a>
+	</div>
+	<img class="hero-shot" src="{{ $p.hero_image }}" alt="{{ $p.hero_alt }}" width="1280" height="720">
+
+	<section>
+		<h2><span class="no">01</span>{{ $p.facts_title }}</h2>
+		<table class="facts">
+			{{- range $p.facts }}
+			<tr><th>{{ .label }}</th><td>{{ .value }}</td></tr>
+			{{- end }}
+		</table>
+	</section>
+
+	<section>
+		<h2><span class="no">02</span>{{ $p.about_title }}</h2>
+		<div class="prose">{{ .Content }}</div>
+	</section>
+
+	<section>
+		<h2><span class="no">03</span>{{ $p.gallery_title }}</h2>
+		<div class="gallery">
+			{{- range $p.gallery }}
+			<figure>
+				<img src="{{ .src }}" alt="{{ .alt }}" loading="lazy" width="1280" height="720">
+				<figcaption>{{ .caption }}</figcaption>
+			</figure>
+			{{- end }}
+		</div>
+	</section>
+
+	<section>
+		<h2><span class="no">04</span>{{ $p.steps_title }}</h2>
+		<div class="steps">
+			{{- range $p.steps }}
+			<div class="step c-{{ .color }}">
+				<div class="n">{{ .n }}</div>
+				<h3>{{ .title }}</h3>
+				<p>{{ .body }}</p>
+			</div>
+			{{- end }}
+		</div>
+	</section>
+
+	<section>
+		<h2><span class="no">05</span>{{ $p.faq_title }}</h2>
+		<dl class="faq">
+			{{- range $p.faq }}
+			<dt>{{ .q }}</dt><dd>{{ .a }}</dd>
+			{{- end }}
+		</dl>
+	</section>
+
+	<section>
+		<h2><span class="no">06</span>{{ $p.dev_title }}</h2>
+		<div class="dev">
+			<p>{{ $p.dev_body }}</p>
+			<p><a href="{{ site.Home.Permalink }}">{{ $p.back_home }} →</a></p>
+		</div>
+	</section>
+
+	<p class="credits">{{ $p.credits }}</p>
+</div>
+
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "VideoGame",
+	"name": {{ .Title | jsonify }},
+	"alternateName": {{ $p.alt_names | jsonify }},
+	"description": {{ .Description | jsonify }},
+	"url": {{ .Permalink | jsonify }},
+	"image": {{ $p.og_image | absURL | jsonify }},
+	"inLanguage": ["ja", "en"],
+	"genre": {{ $p.genres | jsonify }},
+	"gamePlatform": "Web browser",
+	"playMode": "SinglePlayer",
+	"applicationCategory": "Game",
+	"operatingSystem": "Web",
+	"datePublished": {{ $p.release | jsonify }},
+	"offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY", "availability": "https://schema.org/InStock" },
+	"author": { "@type": "Organization", "name": {{ $p.dev_name | jsonify }}, "url": {{ site.Home.Permalink | jsonify }} },
+	"sameAs": [ {{ $p.play_url | jsonify }}, {{ $p.itch_url | jsonify }} ]
+}
+</script>
+{{ end }}
