@@ -45,12 +45,9 @@ params:
   faq:
     - { q: Is it free?, a: "Yes. It runs in your browser for free on both unityroom and itch.io — nothing to install." }
     - { q: How long is one run?, a: "One run is 25 in-game days, about 30 minutes. There is no save system; each run is self-contained." }
-    - { q: Can I play on a phone?, a: "A desktop browser is recommended." }
     - { q: Any tips?, a: "Adjacency is everything: houses next to workplaces, machines next to generators. Build up food first, then switch to pampering. The Grand Feast converts your food stockpile into hearts in one go." }
     - { q: Is there a ranking?, a: "On the unityroom version, your score (total hearts) is submitted to the online ranking when you survive all 25 days." }
     - { q: Is it available in Japanese?, a: "Yes. Switch between English and Japanese with the tabs at the top right of the title screen." }
-  dev_title: From the developer
-  dev_body: Made with Godot 4 by Nukumori Robot Workshop, a solo game studio, and polished up from a one-week game-jam build. The whole look — a limited risograph palette and code-drawn pictograms — is designed as the Mother AI's own experiment logbook.
   back_home: Nukumori Robot Workshop
   credits: 'In-game asset credits — Fonts: Moji-Waku Kenkyu (Makinas 4 Flat, Kaisotai Next UP-B) / BGM: Amacha Music Studio "Haru no Kagayaki" / SFX: Soundeffect-Lab'
 ---
