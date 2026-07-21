@@ -158,7 +158,7 @@
 	<div class="shelf">
 		{{- range $p.games }}
 		<a class="game-card" href="{{ .url }}"{{ if .external }} target="_blank" rel="noopener"{{ end }}>
-			<img src="{{ .img }}" alt="{{ .alt }}" loading="lazy" width="616" height="353">
+			<img src="{{ .img }}" alt="{{ .alt }}" width="616" height="353">
 			<div class="pad">
 				<h3>{{ .title }}{{ if .external }} <span class="ext">↗</span>{{ end }}</h3>
 				<p>{{ .blurb }}</p>
