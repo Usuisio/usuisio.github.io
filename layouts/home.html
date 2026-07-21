@@ -1,0 +1,47 @@
+{{ define "head" }}
+<style>
+	:root {
+		--bg: #faf3e7;
+		--ink: #4a3728;
+		--sub: #7a6553;
+		--accent: #e8843c;
+		--card: #fffaf2;
+	}
+	* { margin: 0; padding: 0; box-sizing: border-box; }
+	body {
+		background: var(--bg);
+		color: var(--ink);
+		font-family: "Hiragino Maru Gothic ProN", "BIZ UDPGothic", "Yu Gothic UI", sans-serif;
+		min-height: 100svh;
+		display: grid;
+		place-items: center;
+		padding: 2rem 1rem;
+	}
+	main { max-width: 34rem; text-align: center; }
+	.emblem { font-size: 3rem; }
+	h1 { margin: 0.5rem 0 0.25rem; font-size: 1.8rem; }
+	.tagline { color: var(--sub); margin-bottom: 2rem; }
+	.card {
+		background: var(--card);
+		border: 2px solid #eadfce;
+		border-radius: 16px;
+		padding: 1.5rem;
+		text-align: left;
+	}
+	.card a { color: var(--accent); font-weight: bold; }
+	.card ul { padding-left: 1.4rem; }
+	.card li { margin: 0.5rem 0; }
+	.lang { margin-top: 2rem; font-size: 0.9rem; }
+	.lang a { color: var(--sub); }
+</style>
+{{ end }}
+
+{{ define "main" }}
+<main>
+	<div class="emblem">🤖🔧</div>
+	<h1>{{ site.Title }}</h1>
+	<p class="tagline">{{ .Params.tagline }}</p>
+	<div class="card">{{ .Content }}</div>
+	<p class="lang">{{ range .Translations }}<a href="{{ .Permalink }}">{{ .Language.Label }}</a>{{ end }}</p>
+</main>
+{{ end }}

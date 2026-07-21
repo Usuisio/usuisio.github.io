@@ -1,0 +1,27 @@
+baseURL = "https://usuisio.github.io/"
+defaultContentLanguage = "ja"
+enableRobotsTXT = true
+disableKinds = ["taxonomy", "term"]
+
+[languages]
+	[languages.ja]
+		locale = "ja"
+		label = "日本語"
+		contentDir = "content/ja"
+		weight = 1
+		title = "ぬくもりロボット工房"
+		[languages.ja.params]
+			description = "個人ゲーム開発「ぬくもりロボット工房」の公式サイト。Steam・unityroomで公開中のゲームを紹介します。"
+	[languages.en]
+		locale = "en"
+		label = "English"
+		contentDir = "content/en"
+		weight = 2
+		title = "Nukumori Robot Workshop"
+		[languages.en.params]
+			description = "Official website of Nukumori Robot Workshop, a solo game studio. Games on Steam and unityroom."
+
+[markup]
+	[markup.goldmark]
+		[markup.goldmark.renderer]
+			unsafe = true
