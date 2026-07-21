@@ -15,8 +15,9 @@ params:
   play_url: https://unityroom.com/games/hitodame
   itch_url: https://usuisio.itch.io/the-mother-ai-who-spoils-humanity
   og_image: /hitodame/og-hitodame-ja.jpg
-  hero_image: /hitodame/title-ja.webp
-  hero_alt: タイトル画面。リソグラフ風の紙の上に「人類をダメにするマザーAI」のロゴと、水色の髪のマザーAIの立ち絵。「極秘」の赤いスタンプが押されている
+  hero_video: /hitodame/demo-ja.mp4
+  hero_poster: /hitodame/title-ja.webp
+  hero_alt: プレイ動画。5×5の盤面に家やチョコフォンデュマシンを置くと住人が集まり、ごちそう祭りでハートが2から25に増える
   release: "2026-07"
   dev_name: ぬくもりロボット工房
   facts_title: 実験データ
@@ -36,6 +37,9 @@ params:
     - src: /hitodame/mid-ja.webp
       alt: プレイ中盤の画面。アイソメ視点の5×5の盤面に、家・畑・発電・チョコフォンデュマシンなどのタイルが並び、住人が働いたり眠ったりしている。上部にはDAY21/25、食料7、しあわせ25の表示
       caption: 第1図 ── 実験21日目。フォンデュマシンに入り浸る住人と、マジメに振れたままのゲージ。
+    - src: /hitodame/title-ja.webp
+      alt: タイトル画面。リソグラフ風の紙の上に「人類をダメにするマザーAI」のロゴと、水色の髪のマザーAIの立ち絵。「極秘」の赤いスタンプが押されている
+      caption: 第2図 ── 実験計画書の表紙。じっけんを はじめる。
   steps_title: 遊び方は3ステップ
   steps:
     - { n: "01", color: green, title: 毎日、3枚から1枚えらぶ, body: 畑・家・発電・ハンモック……日替わりの3択から今日のタイルを1枚。 }

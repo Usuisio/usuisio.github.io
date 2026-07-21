@@ -103,7 +103,7 @@
 	.btn.primary:hover { background: #c74a37; }
 	.btn.ghost { color: var(--red); }
 	.btn.ghost:hover { background: rgba(224, 90, 69, 0.1); }
-	.hero-shot { border: 2px solid var(--ink); }
+	.hero-shot { border: 2px solid var(--ink); width: 100%; height: auto; display: block; }
 
 	/* ---- sections ---- */
 	section { margin-top: 3.2rem; }
@@ -179,7 +179,13 @@
 		<a class="btn primary" href="{{ $p.play_url }}">▶ {{ $p.play_label }}</a>
 		<a class="btn ghost" href="{{ $p.itch_url }}">{{ $p.itch_label }}</a>
 	</div>
+	{{ if $p.hero_video -}}
+	<video class="hero-shot" autoplay muted loop playsinline poster="{{ $p.hero_poster }}" aria-label="{{ $p.hero_alt }}" width="960" height="540">
+		<source src="{{ $p.hero_video }}" type="video/mp4">
+	</video>
+	{{- else -}}
 	<img class="hero-shot" src="{{ $p.hero_image }}" alt="{{ $p.hero_alt }}" width="1280" height="720">
+	{{- end }}
 
 	<section>
 		<h2><span class="no">01</span>{{ $p.facts_title }}</h2>

@@ -15,8 +15,9 @@ params:
   play_url: https://unityroom.com/games/hitodame
   itch_url: https://usuisio.itch.io/the-mother-ai-who-spoils-humanity
   og_image: /hitodame/og-hitodame-en.jpg
-  hero_image: /hitodame/title-en.webp
-  hero_alt: Title screen. On risograph-style paper, the logo "The Mother AI Who Spoils Humanity" next to a blue-haired Mother AI character, with a red TOP SECRET stamp
+  hero_video: /hitodame/demo-en.mp4
+  hero_poster: /hitodame/title-en.webp
+  hero_alt: Gameplay video. Placing houses and a chocolate fondue machine in the 5×5 world draws villagers in, and a Grand Feast raises hearts from 2 to 25
   release: "2026-07"
   dev_name: Nukumori Robot Workshop
   facts_title: Experiment Data
@@ -36,6 +37,9 @@ params:
     - src: /hitodame/mid-en.webp
       alt: Mid-game screen. An isometric 5×5 board filled with houses, farms, a generator and a chocolate fondue machine; villagers work or nap. The HUD shows day 21 of 25, 7 food and 25 hearts
       caption: Fig. 1 — Day 21 of the experiment. A villager is glued to the fondue machine while the gauge still leans "diligent".
+    - src: /hitodame/title-en.webp
+      alt: Title screen. On risograph-style paper, the logo "The Mother AI Who Spoils Humanity" next to a blue-haired Mother AI character, with a red TOP SECRET stamp
+      caption: Fig. 2 — Cover of the experiment plan. Begin the experiment.
   steps_title: How to play — 3 steps
   steps:
     - { n: "01", color: green, title: Pick 1 of 3 tiles each day, body: "Farms, houses, generators, hammocks… choose today's tile from a daily draft of three." }
