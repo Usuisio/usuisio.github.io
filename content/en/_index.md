@@ -4,6 +4,7 @@ description: Official site of Nukumori Robot Workshop, a solo game studio making
 params:
   hero_title: '<span class="wavy">Warm</span> little games,<br>from a tiny workshop.'
   hero_sub: Nukumori Robot Workshop is a solo game dev studio — free browser games you can play right away, and an adventure on Steam.
+  mascot_alt: Nukumori Robot Workshop's mascot — a white rabbit in a work jacket, carrying a wrench
   games_title: Games
   games:
     - title: The Mother AI Who Spoils Humanity
