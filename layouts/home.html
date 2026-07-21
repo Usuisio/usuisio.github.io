@@ -1,47 +1,188 @@
 {{ define "head" }}
 <style>
+	@font-face {
+		font-family: "Zen Maru Gothic";
+		src: url("/fonts/ZenMaruGothic-Medium-sub.woff2") format("woff2");
+		font-weight: 500;
+		font-display: swap;
+	}
+	@font-face {
+		font-family: "Zen Maru Gothic";
+		src: url("/fonts/ZenMaruGothic-Bold-sub.woff2") format("woff2");
+		font-weight: 700;
+		font-display: swap;
+	}
 	:root {
-		--bg: #faf3e7;
-		--ink: #4a3728;
-		--sub: #7a6553;
-		--accent: #e8843c;
+		--cream: #faf3e7;
 		--card: #fffaf2;
+		--brown: #4a3728;
+		--sub: #8a7361;
+		--orange: #e8843c;
+		--line: #e6d9c3;
 	}
 	* { margin: 0; padding: 0; box-sizing: border-box; }
 	body {
-		background: var(--bg);
-		color: var(--ink);
-		font-family: "Hiragino Maru Gothic ProN", "BIZ UDPGothic", "Yu Gothic UI", sans-serif;
-		min-height: 100svh;
-		display: grid;
-		place-items: center;
-		padding: 2rem 1rem;
+		background-color: var(--cream);
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.29 0 0 0 0 0.22 0 0 0 0 0.16 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+		color: var(--brown);
+		font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Yu Gothic UI", sans-serif;
+		font-weight: 500;
+		line-height: 1.9;
 	}
-	main { max-width: 34rem; text-align: center; }
-	.emblem { font-size: 3rem; }
-	h1 { margin: 0.5rem 0 0.25rem; font-size: 1.8rem; }
-	.tagline { color: var(--sub); margin-bottom: 2rem; }
-	.card {
+	.wrap { max-width: 56rem; margin: 0 auto; padding: 1.2rem clamp(1rem, 4vw, 2.5rem) 2.5rem; }
+	a { color: var(--brown); }
+	img { display: block; }
+
+	/* ---- header ---- */
+	.top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+	.brand { display: flex; align-items: center; gap: 0.5rem; font-weight: 700; }
+	.langs { display: flex; gap: 0.4rem; font-size: 0.8rem; }
+	.langs a, .langs span { border: 2px solid var(--brown); border-radius: 999px; padding: 0 0.8em; text-decoration: none; }
+	.langs span { background: var(--orange); border-color: var(--orange); color: #fff; }
+	.langs a:hover { background: #fff; }
+
+	/* ---- hero ---- */
+	.hero { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; padding: 2.8rem 0 1.6rem; }
+	h1 { font-size: clamp(1.45rem, 4.5vw, 2.15rem); font-weight: 700; line-height: 1.75; }
+	.wavy { text-decoration: underline wavy var(--orange); text-decoration-thickness: 2px; text-underline-offset: 0.35em; }
+	.hero .sub { color: var(--sub); margin-top: 1.1rem; max-width: 36em; font-size: 0.95rem; }
+	.mascot { width: clamp(130px, 20vw, 175px); height: auto; }
+	.steam { transform-box: fill-box; transform-origin: center; animation: steam 2.8s ease-in-out infinite; opacity: 0; }
+	.s2 { animation-delay: 1.4s; }
+	@keyframes steam {
+		0% { opacity: 0; transform: translateY(5px); }
+		35% { opacity: 0.75; }
+		100% { opacity: 0; transform: translateY(-7px); }
+	}
+	@media (max-width: 640px) {
+		.hero { grid-template-columns: 1fr; gap: 1.2rem; }
+		.mascot { margin: 0 auto; }
+	}
+
+	/* ---- sections ---- */
+	h2 { font-size: 1.1rem; font-weight: 700; display: flex; align-items: center; gap: 0.6em; margin: 2.4rem 0 1.2rem; }
+	h2::before { content: ""; width: 0.5em; height: 0.5em; background: var(--orange); border-radius: 2px; transform: rotate(45deg); flex: none; }
+	h2::after { content: ""; flex: 1; border-top: 2px dashed var(--line); }
+
+	/* ---- game shelf ---- */
+	.shelf { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1.4rem; }
+	.game-card {
 		background: var(--card);
-		border: 2px solid #eadfce;
-		border-radius: 16px;
-		padding: 1.5rem;
-		text-align: left;
+		border: 2px solid var(--brown);
+		border-radius: 14px;
+		overflow: hidden;
+		text-decoration: none;
+		box-shadow: 4px 4px 0 rgba(74, 55, 40, 0.12);
+		transition: transform 0.15s ease, box-shadow 0.15s ease;
 	}
-	.card a { color: var(--accent); font-weight: bold; }
-	.card ul { padding-left: 1.4rem; }
-	.card li { margin: 0.5rem 0; }
-	.lang { margin-top: 2rem; font-size: 0.9rem; }
-	.lang a { color: var(--sub); }
+	.game-card:hover { transform: translateY(-4px) rotate(-0.4deg); box-shadow: 6px 8px 0 rgba(74, 55, 40, 0.16); }
+	.game-card img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-bottom: 2px solid var(--brown); background: #fff; }
+	.game-card .pad { padding: 0.9rem 1rem 1.1rem; }
+	.game-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.35rem; }
+	.game-card .ext { color: var(--sub); font-size: 0.85em; }
+	.game-card p { font-size: 0.84rem; color: var(--sub); line-height: 1.75; margin-bottom: 0.7rem; }
+	.tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+	.tag { font-size: 0.72rem; border: 1.5px solid var(--line); background: #fff; border-radius: 999px; padding: 0.05em 0.7em; color: var(--sub); }
+	.more {
+		display: block;
+		text-align: center;
+		border: 2px dashed var(--brown);
+		border-radius: 14px;
+		padding: 0.85rem;
+		margin-top: 1.4rem;
+		text-decoration: none;
+		color: var(--sub);
+		font-weight: 700;
+	}
+	.more:hover { background: var(--card); }
+
+	/* ---- footer ---- */
+	footer {
+		margin-top: 3rem;
+		border-top: 2px dashed var(--line);
+		padding-top: 1.2rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		flex-wrap: wrap;
+		gap: 0.8rem;
+		font-size: 0.85rem;
+		color: var(--sub);
+	}
+	footer a { color: var(--sub); margin-right: 1em; }
 </style>
 {{ end }}
 
 {{ define "main" }}
-<main>
-	<div class="emblem">🤖🔧</div>
-	<h1>{{ site.Title }}</h1>
-	<p class="tagline">{{ .Params.tagline }}</p>
-	<div class="card">{{ .Content }}</div>
-	<p class="lang">{{ range .Translations }}<a href="{{ .Permalink }}">{{ .Language.Label }}</a>{{ end }}</p>
-</main>
+{{- $p := .Params }}
+<div class="wrap">
+	<header class="top">
+		<div class="brand">
+			<svg width="34" height="34" viewBox="0 0 60 60" aria-hidden="true"><line x1="30" y1="6" x2="30" y2="12" stroke="#4a3728" stroke-width="3.5" stroke-linecap="round"/><circle cx="30" cy="5" r="3.5" fill="#e8843c"/><rect x="8" y="12" width="44" height="36" rx="11" fill="#fffaf2" stroke="#4a3728" stroke-width="3.5"/><circle cx="22" cy="28" r="3.2" fill="#4a3728"/><circle cx="38" cy="28" r="3.2" fill="#4a3728"/><path d="M25 36 q5 4.5 10 0" fill="none" stroke="#4a3728" stroke-width="3" stroke-linecap="round"/></svg>
+			<strong>{{ site.Title }}</strong>
+		</div>
+		<nav class="langs">
+			<span>{{ site.Language.Label }}</span>
+			{{- range .Translations }}<a href="{{ .Permalink }}">{{ .Language.Label }}</a>{{ end }}
+		</nav>
+	</header>
+
+	<section class="hero">
+		<div>
+			<h1>{{ $p.hero_title | safeHTML }}</h1>
+			<p class="sub">{{ $p.hero_sub }}</p>
+		</div>
+		<svg class="mascot" viewBox="0 0 150 150" aria-hidden="true">
+			<line x1="72" y1="16" x2="72" y2="28" stroke="#4a3728" stroke-width="4" stroke-linecap="round"/>
+			<circle cx="72" cy="12" r="5.5" fill="#e8843c"/>
+			<rect x="37" y="28" width="70" height="52" rx="16" fill="#fffaf2" stroke="#4a3728" stroke-width="4"/>
+			<rect x="29" y="46" width="8" height="16" rx="4" fill="#4a3728"/>
+			<rect x="107" y="46" width="8" height="16" rx="4" fill="#4a3728"/>
+			<circle cx="59" cy="52" r="4.5" fill="#4a3728"/>
+			<circle cx="85" cy="52" r="4.5" fill="#4a3728"/>
+			<path d="M65 64 Q72 70 79 64" fill="none" stroke="#4a3728" stroke-width="3.5" stroke-linecap="round"/>
+			<circle cx="50" cy="61" r="4.5" fill="#e8843c" opacity="0.35"/>
+			<circle cx="94" cy="61" r="4.5" fill="#e8843c" opacity="0.35"/>
+			<rect x="47" y="84" width="50" height="42" rx="13" fill="#fffaf2" stroke="#4a3728" stroke-width="4"/>
+			<path d="M72 100 c-3.5-4.5-10-3-10 1.6 c0 3.8 5.6 6.5 10 9.9 c4.4-3.4 10-6.1 10-9.9 c0-4.6-6.5-6.1-10-1.6z" fill="#e8843c"/>
+			<path d="M97 98 q12 2 16 12" fill="none" stroke="#4a3728" stroke-width="4" stroke-linecap="round"/>
+			<path d="M47 98 q-10 4 -8 14" fill="none" stroke="#4a3728" stroke-width="4" stroke-linecap="round"/>
+			<rect x="106" y="110" width="20" height="17" rx="4" fill="#fffaf2" stroke="#4a3728" stroke-width="3.5"/>
+			<path d="M126 114 q8 3.5 0 9" fill="none" stroke="#4a3728" stroke-width="3.5"/>
+			<path class="steam s1" d="M112 104 q3.5-5 0-10" fill="none" stroke="#8a7361" stroke-width="3" stroke-linecap="round"/>
+			<path class="steam s2" d="M120 104 q3.5-5 0-10" fill="none" stroke="#8a7361" stroke-width="3" stroke-linecap="round"/>
+		</svg>
+	</section>
+
+	<h2>{{ $p.games_title }}</h2>
+	<div class="shelf">
+		{{- range $p.games }}
+		<a class="game-card" href="{{ .url }}"{{ if .external }} target="_blank" rel="noopener"{{ end }}>
+			<img src="{{ .img }}" alt="{{ .alt }}" loading="lazy" width="616" height="353">
+			<div class="pad">
+				<h3>{{ .title }}{{ if .external }} <span class="ext">↗</span>{{ end }}</h3>
+				<p>{{ .blurb }}</p>
+				<div class="tags">{{ range .tags }}<span class="tag">{{ . }}</span>{{ end }}</div>
+			</div>
+		</a>
+		{{- end }}
+	</div>
+	<a class="more" href="{{ $p.more_url }}" target="_blank" rel="noopener">{{ $p.more_label }} ↗</a>
+
+	<footer>
+		<div>{{ range $p.footer_links }}<a href="{{ .url }}" target="_blank" rel="noopener">{{ .label }} ↗</a>{{ end }}</div>
+		<div>{{ $p.copyright }}</div>
+	</footer>
+</div>
+
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "Organization",
+	"name": {{ $p.org_name | jsonify }},
+	"alternateName": {{ $p.org_alt | jsonify }},
+	"url": {{ site.Home.Permalink | jsonify }},
+	"sameAs": {{ $p.sameas | jsonify }}
+}
+</script>
 {{ end }}

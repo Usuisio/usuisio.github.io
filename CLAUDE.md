@@ -15,6 +15,7 @@
 ## 実行
 
 - ビルド: `hugo` ／ プレビュー: `hugo server`
+- Webフォント: Zen Maru Gothic のサブセットを `pwsh scripts/gen-fonts.ps1` で生成（SIL OFL＝再配布可なので同梱してよい）。**サイトの文言を変えたら再実行**して woff2 を更新すること。もじワク研究等のOFLでないフォントはファイルを置かない（画像/SVG化のみ）。
 - デプロイ: main に push → GitHub Actions（`hugo.yml`）が自動ビルド → Pages に反映
 - コミット＆プッシュは作業の区切りごとに随時行ってよい。
 
