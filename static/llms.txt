@@ -1,0 +1,17 @@
+# ぬくもりロボット工房 (Nukumori Robot Workshop)
+
+> 個人ゲーム開発の工房「ぬくもりロボット工房」の公式サイト。ブラウザで遊べる無料ゲームと、Steamで販売中のアドベンチャーを公開している。
+> Official website of Nukumori Robot Workshop, a solo game studio. Free browser games and a paid adventure on Steam.
+
+## ゲーム / Games
+
+- [人類をダメにするマザーAI](https://usuisio.github.io/hitodame/): 5×5の箱庭にタイルを置いて人類を甘やかし「しあわせ❤」を集める管理シミュレーション。25日制・約30分・無料・ブラウザ（unityroom / itch.io）・日英対応 ([English page](https://usuisio.github.io/en/hitodame/))
+- [リペア・ザ・ココロ / Repair the Cocoro](https://usuisio.github.io/repair-the-cocoro/): ブラウザの開発者コンソール（F12）に本物のコマンドを打ちこんで、こわれた子守ロボットを修理するテキストアドベンチャー。約15分・無料・PCブラウザ専用・日英韓対応・マルチエンディング ([English page](https://usuisio.github.io/en/repair-the-cocoro/))
+- [DoppelTest（ドッペルテスト）](https://store.steampowered.com/app/3849320/): ひきこもりの子カガリと、身代わりを務めるロボットカガミの14日間を見守るアドベンチャー。Steam・￥580・日英対応
+- [その他の作品一覧（unityroom）](https://unityroom.com/users/usuisio)
+
+## リンク / Links
+
+- [トップページ](https://usuisio.github.io/)（[English](https://usuisio.github.io/en/)）
+- [itch.io](https://usuisio.itch.io)
+- [YouTube](https://www.youtube.com/@user-NukuRobo)
