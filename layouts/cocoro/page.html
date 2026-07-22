@@ -1,0 +1,216 @@
+{{ define "head" }}
+<style>
+	:root {
+		--bg: #16151a;
+		--panel: #1d1c22;
+		--ink: #e5e8ef;
+		--cyan: #02edbe;
+		--dim: #7d818f;
+		--line: #33323b;
+		--pink: #f5a3c7;
+	}
+	* { margin: 0; padding: 0; box-sizing: border-box; }
+	body {
+		background: var(--bg);
+		color: var(--ink);
+		font-family: "SFMono-Regular", "Consolas", "Menlo", "BIZ UDGothic", monospace;
+		line-height: 1.85;
+		padding: 1rem;
+		-webkit-font-smoothing: antialiased;
+	}
+	.wrap { max-width: 56rem; margin: 0 auto; }
+	a { color: var(--cyan); }
+	img { display: block; max-width: 100%; height: auto; }
+	.cy { color: var(--cyan); }
+
+	/* prompt-style headings */
+	.cmd { color: var(--cyan); }
+	.cmd::before { content: "> "; color: var(--dim); }
+
+	/* ---- top bar ---- */
+	.top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; font-size: 0.82rem; color: var(--dim); padding-bottom: 1.5rem; }
+	.top a { color: var(--dim); text-decoration: none; }
+	.top a:hover { color: var(--ink); }
+	.langs { display: flex; gap: 0.5rem; }
+	.langs .on { color: var(--cyan); }
+
+	/* ---- terminal hero ---- */
+	.term { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--panel); }
+	.term-bar { display: flex; align-items: center; gap: 0.5rem; padding: 0.55rem 0.9rem; border-bottom: 1px solid var(--line); font-size: 0.78rem; color: var(--dim); }
+	.dot { width: 11px; height: 11px; border-radius: 50%; flex: none; }
+	.dot.r { background: #ff5f57; } .dot.y { background: #febc2e; } .dot.g { background: #28c840; }
+	.term-bar .path { margin-left: 0.5rem; }
+	.term-body { display: grid; grid-template-columns: 1fr auto; gap: 1.5rem; align-items: center; padding: 2rem 1.6rem; }
+	.type {
+		font-size: 0.95rem; color: var(--cyan); white-space: nowrap; overflow: hidden;
+		border-right: 2px solid var(--cyan);
+		width: 0; animation: typing 1.6s steps(9) 0.3s forwards, caret 0.8s step-end infinite;
+	}
+	@keyframes typing { to { width: 9ch; } }
+	@keyframes caret { 50% { border-color: transparent; } }
+	@media (prefers-reduced-motion: reduce) { .type { width: 9ch; animation: none; border-right: none; } }
+	h1 { font-size: clamp(1.6rem, 5vw, 2.4rem); line-height: 1.35; margin: 0.6rem 0 0.3rem; letter-spacing: 0.02em; }
+	.subtitle { color: var(--dim); font-size: 0.9rem; margin-bottom: 1.3rem; }
+	.tagline { margin-bottom: 1.6rem; max-width: 32em; }
+	.actions { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+	.btn { display: inline-block; text-decoration: none; font-weight: bold; padding: 0.5em 1.4em; border-radius: 6px; font-size: 0.92rem; }
+	.btn.primary { background: var(--cyan); color: #0c0b0f; }
+	.btn.primary:hover { background: #4ff5d6; }
+	.btn.ghost { border: 1px solid var(--line); color: var(--ink); }
+	.btn.ghost:hover { border-color: var(--cyan); }
+	.portrait { width: clamp(150px, 24vw, 220px); }
+	@media (max-width: 640px) { .term-body { grid-template-columns: 1fr; } .portrait { margin: 0 auto; order: -1; width: 160px; } }
+
+	/* ---- sections ---- */
+	section { margin-top: 3rem; }
+	h2 { font-size: 1.05rem; margin-bottom: 1.1rem; font-weight: bold; }
+	.note { color: var(--dim); }
+
+	/* ---- diagnostic table ---- */
+	.diag { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+	.diag .row { display: grid; grid-template-columns: 10em 1fr; gap: 0.5rem; padding: 0.5em 1rem; font-size: 0.9rem; }
+	.diag .row:nth-child(odd) { background: rgba(255,255,255,0.02); }
+	.diag .k { color: var(--dim); }
+	.diag .k::before { content: "· "; color: var(--cyan); }
+
+	/* ---- prose ---- */
+	.prose p { margin-bottom: 1.1em; max-width: 40em; }
+	.prose code { background: rgba(2,237,190,0.12); color: var(--cyan); padding: 0.05em 0.45em; border-radius: 4px; font-size: 0.92em; }
+	.prose mark { background: none; color: var(--ink); border-bottom: 2px solid var(--cyan); padding-bottom: 1px; }
+
+	/* ---- gallery ---- */
+	.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1.1rem; }
+	.gallery figure { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--panel); }
+	.gallery img { width: 100%; border-bottom: 1px solid var(--line); }
+	.gallery figcaption { font-size: 0.78rem; color: var(--dim); padding: 0.6rem 0.8rem; }
+
+	/* ---- steps ---- */
+	.steps { display: grid; gap: 0.8rem; }
+	.step { border: 1px solid var(--line); border-radius: 8px; padding: 0.9rem 1.1rem; }
+	.step .n { color: var(--cyan); font-size: 0.8rem; }
+	.step h3 { font-size: 0.98rem; margin: 0.15rem 0 0.4rem; }
+	.step p { font-size: 0.88rem; color: var(--ink); }
+	.step code { background: rgba(2,237,190,0.12); color: var(--cyan); padding: 0.05em 0.4em; border-radius: 4px; }
+
+	/* ---- faq ---- */
+	.faq dt { color: var(--cyan); margin-top: 1.1em; }
+	.faq dt::before { content: "Q "; color: var(--dim); }
+	.faq dd { margin-left: 1.4em; max-width: 40em; }
+
+	/* ---- footer ---- */
+	footer { margin-top: 3rem; border-top: 1px solid var(--line); padding-top: 1.2rem; font-size: 0.82rem; color: var(--dim); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
+	footer a { color: var(--dim); }
+	.credits { font-size: 0.75rem; color: var(--dim); margin-top: 2.5rem; opacity: 0.7; }
+</style>
+{{ end }}
+
+{{ define "main" }}
+{{- $p := .Params }}
+<div class="wrap">
+	<div class="top">
+		<a href="{{ site.Home.Permalink }}">{{ $p.back_home }}</a>
+		<nav class="langs">
+			<span class="on">{{ site.Language.Label }}</span>
+			{{- range .Translations }}<a href="{{ .Permalink }}">{{ .Language.Label }}</a>{{ end }}
+		</nav>
+	</div>
+
+	<div class="term">
+		<div class="term-bar">
+			<span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+			<span class="path">{{ $p.term_path }}</span>
+		</div>
+		<div class="term-body">
+			<div>
+				<div class="type">CHECK()</div>
+				<h1>{{ .Title }}</h1>
+				<p class="subtitle">{{ $p.subtitle }}</p>
+				<p class="tagline">{{ $p.tagline }}</p>
+				<div class="actions">
+					<a class="btn primary" href="{{ $p.play_url }}">{{ $p.play_label }}</a>
+				</div>
+			</div>
+			<img class="portrait" src="/cocoro/portrait.webp" alt="{{ $p.portrait_alt }}" width="560" height="553">
+		</div>
+	</div>
+
+	<section>
+		<h2 class="cmd">CHECK()</h2>
+		<div class="diag">
+			{{- range $p.diag }}
+			<div class="row"><span class="k">{{ .k }}</span><span class="v">{{ .v }}</span></div>
+			{{- end }}
+		</div>
+	</section>
+
+	<section>
+		<h2 class="cmd">{{ $p.about_cmd }}</h2>
+		<div class="prose">{{ .Content }}</div>
+	</section>
+
+	<section>
+		<h2 class="cmd">screenshots</h2>
+		<div class="gallery">
+			{{- range $p.gallery }}
+			<figure>
+				<img src="{{ .src }}" alt="{{ .alt }}" loading="lazy" width="1000" height="563">
+				<figcaption>{{ .caption }}</figcaption>
+			</figure>
+			{{- end }}
+		</div>
+	</section>
+
+	<section>
+		<h2 class="cmd">HELP()</h2>
+		<div class="steps">
+			{{- range $p.steps }}
+			<div class="step">
+				<div class="n">{{ .n }}</div>
+				<h3>{{ .title }}</h3>
+				<p>{{ .body | safeHTML }}</p>
+			</div>
+			{{- end }}
+		</div>
+	</section>
+
+	<section>
+		<h2 class="cmd">FAQ</h2>
+		<dl class="faq">
+			{{- range $p.faq }}
+			<dt>{{ .q }}</dt><dd>{{ .a }}</dd>
+			{{- end }}
+		</dl>
+	</section>
+
+	<footer>
+		<a href="{{ site.Home.Permalink }}">← {{ $p.back_home }}</a>
+		<span>{{ $p.credits }}</span>
+	</footer>
+</div>
+
+<script>
+	// F12を開いた人へのイースターエッグ（ゲームの操作がコンソールなので）
+	console.log("%c{{ $p.egg }}", "color:#02edbe;font-size:14px;");
+</script>
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "VideoGame",
+	"name": {{ .Title | jsonify }},
+	"alternateName": {{ $p.alt_names | jsonify }},
+	"description": {{ .Description | jsonify }},
+	"url": {{ .Permalink | jsonify }},
+	"image": {{ "/cocoro/og-cocoro.jpg" | absURL | jsonify }},
+	"inLanguage": ["ja", "en", "ko"],
+	"genre": {{ $p.genres | jsonify }},
+	"gamePlatform": "PC (web browser)",
+	"playMode": "SinglePlayer",
+	"applicationCategory": "Game",
+	"operatingSystem": "Web browser (desktop)",
+	"datePublished": "2024-07",
+	"offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY", "availability": "https://schema.org/InStock" },
+	"author": { "@type": "Organization", "name": {{ $p.dev_name | jsonify }}, "url": {{ site.Home.Permalink | jsonify }} },
+	"sameAs": [ {{ $p.play_url | jsonify }} ]
+}
+</script>
+{{ end }}

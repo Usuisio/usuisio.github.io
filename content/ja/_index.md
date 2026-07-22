@@ -13,6 +13,12 @@ params:
       img: /hitodame/title-ja.webp
       alt: 人類をダメにするマザーAIのタイトル画面。紙の上のロゴとマザーAIの立ち絵
       tags: [ブラウザ, 無料]
+    - title: リペア・ザ・ココロ
+      blurb: こわれた子守ロボットを、ブラウザの開発者コンソール（F12）に本物のコマンドを打って修理するテキストアドベンチャー。約15分・マルチエンディング。
+      url: /repair-the-cocoro/
+      img: /cocoro/scene-ja.webp
+      alt: リペア・ザ・ココロの会話シーン。子守ロボット・ロコロが嬉しそうに話している
+      tags: [ブラウザ, 無料]
     - title: DoppelTest（ドッペルテスト）
       blurb: ひきこもりの子カガリと、その身代わりを務めるロボットカガミ。ふたりの14日間を見守るアドベンチャー。
       url: https://store.steampowered.com/app/3849320/

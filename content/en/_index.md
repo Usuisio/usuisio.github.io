@@ -13,6 +13,12 @@ params:
       img: /hitodame/title-en.webp
       alt: Title screen of The Mother AI Who Spoils Humanity, with the logo and the Mother AI character on paper
       tags: [Browser, Free]
+    - title: Repair the Cocoro
+      blurb: A text adventure where you repair a broken caretaker robot by typing real commands into your browser's F12 console. ~15 min, multiple endings.
+      url: /en/repair-the-cocoro/
+      img: /cocoro/scene-en.webp
+      alt: A conversation scene from Repair the Cocoro, with the caretaker robot Cocoro talking happily
+      tags: [Browser, Free]
     - title: DoppelTest
       blurb: A gentle adventure watching over 14 days of Kagari, a withdrawn child, and Kagami, the robot who lives as their stand-in.
       url: https://store.steampowered.com/app/3849320/
