@@ -1,13 +1,14 @@
 {{ define "head" }}
 <style>
 	:root {
-		--bg: #16151a;
-		--panel: #1d1c22;
-		--ink: #e5e8ef;
-		--cyan: #02edbe;
-		--dim: #7d818f;
-		--line: #33323b;
-		--pink: #f5a3c7;
+		--bg: #f3f2f7;
+		--panel: #ffffff;
+		--ink: #23222b;
+		--cyan: #0a9c86;
+		--dim: #86828f;
+		--line: #e3e1ea;
+		--stripe: rgba(0, 0, 0, 0.025);
+		--pink: #e0679a;
 	}
 	* { margin: 0; padding: 0; box-sizing: border-box; }
 	body {
@@ -54,11 +55,11 @@
 	.tagline { margin-bottom: 1.6rem; max-width: 32em; }
 	.actions { display: flex; flex-wrap: wrap; gap: 0.7rem; }
 	.btn { display: inline-block; text-decoration: none; font-weight: bold; padding: 0.5em 1.4em; border-radius: 6px; font-size: 0.92rem; }
-	.btn.primary { background: var(--cyan); color: #0c0b0f; }
-	.btn.primary:hover { background: #4ff5d6; }
+	.btn.primary { background: var(--cyan); color: #fff; }
+	.btn.primary:hover { background: #0b8975; }
 	.btn.ghost { border: 1px solid var(--line); color: var(--ink); }
 	.btn.ghost:hover { border-color: var(--cyan); }
-	.portrait { width: clamp(150px, 24vw, 220px); }
+	.portrait { width: clamp(150px, 24vw, 230px); height: auto; }
 	@media (max-width: 640px) { .term-body { grid-template-columns: 1fr; } .portrait { margin: 0 auto; order: -1; width: 160px; } }
 
 	/* ---- sections ---- */
@@ -69,7 +70,7 @@
 	/* ---- diagnostic table ---- */
 	.diag { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
 	.diag .row { display: grid; grid-template-columns: 10em 1fr; gap: 0.5rem; padding: 0.5em 1rem; font-size: 0.9rem; }
-	.diag .row:nth-child(odd) { background: rgba(255,255,255,0.02); }
+	.diag .row:nth-child(odd) { background: var(--stripe); }
 	.diag .k { color: var(--dim); }
 	.diag .k::before { content: "· "; color: var(--cyan); }
 
@@ -130,7 +131,7 @@
 					<a class="btn primary" href="{{ $p.play_url }}">{{ $p.play_label }}</a>
 				</div>
 			</div>
-			<img class="portrait" src="/cocoro/portrait.webp" alt="{{ $p.portrait_alt }}" width="560" height="553">
+			<img class="portrait" src="/cocoro/portrait.webp" alt="{{ $p.portrait_alt }}" width="640" height="798">
 		</div>
 	</div>
 
