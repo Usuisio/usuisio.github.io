@@ -12,4 +12,4 @@ params:
       alt: Another version of the same drawing. Kagami smiles with her eyes closed, next to a handwritten exchange — Kagari asks "...Is there no drawing of me?", Kagami replies "Master, you'll get one when Human Day comes!", and Kagari mutters "That day doesn't exist"
 ---
 
-An illustration drawn for Robot Day. The second version comes with a little exchange with Kagari.
+An illustration drawn for Robot Day.
