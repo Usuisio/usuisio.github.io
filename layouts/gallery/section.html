@@ -1,0 +1,125 @@
+{{ define "head" }}
+{{- $t := .Params.theme | default dict }}
+<style>
+	:root {
+		--bg: {{ $t.bg | default "#faf3e7" | safeCSS }};
+		--panel: {{ $t.panel | default "#fffaf2" | safeCSS }};
+		--ink: {{ $t.ink | default "#4a3728" | safeCSS }};
+		--accent: {{ $t.accent | default "#e8843c" | safeCSS }};
+		--dim: {{ $t.dim | default "#8a7361" | safeCSS }};
+		--line: {{ $t.line | default "#e6d9c3" | safeCSS }};
+	}
+	* { margin: 0; padding: 0; box-sizing: border-box; }
+	body {
+		background: var(--bg);
+		color: var(--ink);
+		font-family: {{ $t.font | default `"Hiragino Maru Gothic ProN", "Yu Gothic UI", sans-serif` | safeCSS }};
+		line-height: 1.85;
+		padding: 1rem;
+		-webkit-font-smoothing: antialiased;
+	}
+	.wrap { max-width: 56rem; margin: 0 auto; }
+	a { color: var(--accent); }
+	img { display: block; max-width: 100%; height: auto; }
+
+	.top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; font-size: 0.82rem; color: var(--dim); padding-bottom: 1.5rem; }
+	.top a { color: var(--dim); text-decoration: none; }
+	.top a:hover { color: var(--ink); }
+	.langs { display: flex; gap: 0.5rem; }
+	.langs .on { color: var(--accent); }
+
+	h1 { font-size: clamp(1.4rem, 4.5vw, 2rem); line-height: 1.5; margin-bottom: 0.4rem; }
+	.lead { color: var(--dim); font-size: 0.92rem; max-width: 40em; margin-bottom: 0.8rem; }
+	.gamelink { font-size: 0.9rem; margin-bottom: 0.8rem; }
+
+	h2 { font-size: 1.02rem; margin: 2.2rem 0 1rem; }
+	h2::before { content: "■ "; color: var(--accent); }
+
+	.rooms { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; }
+	.room { display: block; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); padding: 0.9rem 1.1rem; text-decoration: none; color: var(--ink); }
+	.room:hover { border-color: var(--accent); }
+	.room .t { font-weight: bold; }
+	.room .d { font-size: 0.8rem; color: var(--dim); }
+
+	.works { display: grid; grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); gap: 1.1rem; }
+	.work { display: block; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--panel); text-decoration: none; color: var(--ink); }
+	.work:hover { border-color: var(--accent); }
+	.work img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-bottom: 1px solid var(--line); background: #fff; }
+	.work .pad { padding: 0.7rem 0.9rem 0.9rem; }
+	.work .t { font-size: 0.92rem; font-weight: bold; line-height: 1.6; }
+	.work .m { font-size: 0.76rem; color: var(--dim); margin-top: 0.25rem; }
+
+	footer { margin-top: 3rem; border-top: 1px solid var(--line); padding-top: 1.2rem; font-size: 0.82rem; color: var(--dim); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
+	footer a { color: var(--dim); }
+</style>
+{{ end }}
+
+{{ define "main" }}
+{{- $root := .FirstSection }}
+{{- $rp := $root.Params }}
+{{- $isRoot := eq . $root }}
+{{- $game := "" }}{{ with .Params.game }}{{ $game = site.GetPage . }}{{ end }}
+<div class="wrap">
+	<div class="top">
+		{{ if $isRoot }}<a href="{{ site.Home.Permalink }}">{{ $rp.back_home }}</a>
+		{{ else }}<a href="{{ $root.RelPermalink }}">← {{ $rp.label_all }}</a>{{ end }}
+		<nav class="langs">
+			<span class="on">{{ site.Language.Label }}</span>
+			{{- range .Translations }}<a href="{{ .Permalink }}">{{ .Language.Label }}</a>{{ end }}
+		</nav>
+	</div>
+
+	<h1>{{ .Title }}</h1>
+	<p class="lead">{{ .Params.lead }}</p>
+	{{- with $game }}
+	<p class="gamelink"><a href="{{ .RelPermalink }}">→ {{ $rp.label_game_page }}：{{ .Title }}</a></p>
+	{{- end }}
+
+	{{- if and $isRoot .Sections }}
+	<h2>{{ $rp.rooms_title }}</h2>
+	<div class="rooms">
+		{{- range .Sections }}
+		<a class="room" href="{{ .RelPermalink }}">
+			<div class="t">{{ .Title }}</div>
+			<div class="d">{{ .Params.lead }}</div>
+		</a>
+		{{- end }}
+	</div>
+	<h2>{{ $rp.works_title }}</h2>
+	{{- end }}
+
+	<div class="works">
+		{{- range .RegularPagesRecursive.ByDate.Reverse }}
+		{{- $first := index .Params.images 0 }}
+		{{- $thumb := "" }}{{ with $first }}{{ with resources.Get .src }}{{ $thumb = .Fill "800x800 webp q88" }}{{ end }}{{ end }}
+		<a class="work" href="{{ .RelPermalink }}">
+			{{- with $thumb }}
+			<img src="{{ .RelPermalink }}" alt="{{ $first.alt }}" loading="lazy" width="{{ .Width }}" height="{{ .Height }}">
+			{{- end }}
+			<div class="pad">
+				<div class="t">{{ .Title }}</div>
+				<div class="m">{{ with .Params.kind }}{{ . }} · {{ end }}{{ .Date | time.Format "2006-01-02" }}{{ if $isRoot }} · {{ .CurrentSection.Title }}{{ end }}</div>
+			</div>
+		</a>
+		{{- end }}
+	</div>
+
+	<footer>
+		<a href="{{ site.Home.Permalink }}">← {{ $rp.back_home }}</a>
+		<span>© {{ site.Title }}</span>
+	</footer>
+</div>
+{{- if $game }}
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "CollectionPage",
+	"name": {{ .Title }},
+	"description": {{ .Description }},
+	"url": {{ .Permalink }},
+	"inLanguage": {{ site.Language.Locale }},
+	"about": { "@type": "VideoGame", "name": {{ $game.Title }}, "url": {{ $game.Permalink }} }
+}
+</script>
+{{- end }}
+{{ end }}

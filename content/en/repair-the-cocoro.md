@@ -35,6 +35,7 @@ params:
     - src: /cocoro/manual-ja.webp
       alt: A manual panel reads "Press F12 to open the console and enter the following commands"
       caption: The in-game manual teaches you each real command.
+  gallery_more: { label: "→ Gallery: Cocoro illustrations & concept art", url: "/gallery/repair-the-cocoro/" }
   steps_title: How to play
   steps:
     - { n: STEP 01, title: Pick a language and listen, body: "Choose one of three languages, hear out Cocoro's problem, and move the conversation forward with choices. Mouse only so far." }
