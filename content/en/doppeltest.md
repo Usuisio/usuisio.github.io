@@ -54,6 +54,7 @@ params:
     - src: /doppeltest/ss-scene.webp
       alt: A workshop scene where Coolan shows a laptop to Kagami
       caption: The story plays as a visual novel — and the townsfolk are watching over the two as well.
+  gallery_more: { label: "→ Gallery: Kagari & Kagami illustrations & concept art", url: "/gallery/doppeltest/" }
   faq:
     - { q: What kind of game is this?, a: You assign tasks in the morning, then watch over the two characters' day. No hectic controls, no difficult puzzles. }
     - { q: How long is it?, a: About one hour per route. There are multiple endings, so changing your choices and playing again is part of the fun. }

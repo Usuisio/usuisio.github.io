@@ -206,6 +206,9 @@
 			</figure>
 			{{- end }}
 		</div>
+		{{- with $p.gallery_more }}
+		<p style="text-align: center; margin-top: 1rem; font-size: 0.9rem;"><a href="{{ .url | relLangURL }}">{{ .label }}</a></p>
+		{{- end }}
 	</section>
 
 	<section>
