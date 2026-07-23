@@ -20,12 +20,11 @@ params:
       alt: リペア・ザ・ココロの会話シーン。子守ロボット・ロコロが嬉しそうに話している
       tags: [ブラウザ, 無料]
     - title: DoppelTest（ドッペルテスト）
-      blurb: ひきこもりの子カガリと、その身代わりを務めるロボットカガミ。ふたりの14日間を見守るアドベンチャー。
-      url: https://store.steampowered.com/app/3849320/
+      blurb: 社会になじめない子カガリと、その身代わりを務めるロボットカガミ。ふたりの14日間を見守るアドベンチャー。
+      url: /doppeltest/
       img: /img/doppeltest.webp
       alt: DoppelTestのキービジュアル。カガリとロボットのカガミが向かい合って立っている
       tags: [Steam, ￥580]
-      external: true
     - title: Hack Poklatte!
       blurb: 悪の天才ハッカーになって屋敷にしのびこみ、メイドロボをハックしてお宝のありかを聞き出すアドベンチャー。
       url: https://usuisio.itch.io/hack-poklatte

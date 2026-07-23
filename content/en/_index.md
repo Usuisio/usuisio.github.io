@@ -20,12 +20,11 @@ params:
       alt: A conversation scene from Repair the Cocoro, with the caretaker robot Cocoro talking happily
       tags: [Browser, Free]
     - title: DoppelTest
-      blurb: A gentle adventure watching over 14 days of Kagari, a withdrawn child, and Kagami, the robot who lives as their stand-in.
-      url: https://store.steampowered.com/app/3849320/
+      blurb: A gentle adventure watching over 14 days of Kagari, a child who can't quite fit into society, and Kagami, the robot who lives as their stand-in.
+      url: /en/doppeltest/
       img: /img/doppeltest.webp
       alt: DoppelTest key art with Kagari and the robot Kagami facing each other
       tags: [Steam]
-      external: true
     - title: Hack Poklatte!
       blurb: Become an evil genius hacker — sneak into the mansion and hack the maid robot into revealing where the treasure is.
       url: https://usuisio.itch.io/hack-poklatte
