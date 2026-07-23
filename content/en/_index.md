@@ -21,11 +21,10 @@ params:
       tags: [Browser, Free]
     - title: DoppelTest
       blurb: A gentle adventure watching over 14 days of Kagari, a withdrawn child, and Kagami, the robot who lives as their stand-in.
-      url: https://store.steampowered.com/app/3849320/
+      url: /en/doppeltest/
       img: /img/doppeltest.webp
       alt: DoppelTest key art with Kagari and the robot Kagami facing each other
       tags: [Steam]
-      external: true
     - title: Hack Poklatte!
       blurb: Become an evil genius hacker — sneak into the mansion and hack the maid robot into revealing where the treasure is.
       url: https://usuisio.itch.io/hack-poklatte

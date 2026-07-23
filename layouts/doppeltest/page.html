@@ -1,0 +1,250 @@
+{{ define "head" }}
+<style>
+	:root {
+		--paper: #fdfbf9;
+		--ink: #4b4653;
+		--sub: #8d8798;
+		--kgr-bg: #fff5f5;
+		--kgm-bg: #f2f7ff;
+		--kgr: #f3a5be;
+		--kgm: #898fd8;
+		--kgr-deep: #c9607f;
+		--kgm-deep: #5c63b8;
+		--line: #eae6ee;
+	}
+	* { margin: 0; padding: 0; box-sizing: border-box; }
+	body {
+		background: var(--paper);
+		color: var(--ink);
+		font-family: "BIZ UDPGothic", "Yu Gothic UI", "Hiragino Sans", sans-serif;
+		line-height: 1.95;
+	}
+	.serif { font-family: "Yu Mincho", "Hiragino Mincho ProN", "BIZ UDPMincho", serif; }
+	a { color: var(--kgm-deep); }
+	img { display: block; max-width: 100%; height: auto; }
+	.wrap { max-width: 54rem; margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2.5rem); }
+
+	/* ---- top bar ---- */
+	.top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; font-size: 0.82rem; padding: 1rem 0 0.5rem; }
+	.top .home { color: var(--sub); text-decoration: none; }
+	.top .home:hover { color: var(--ink); }
+	.langs { display: flex; gap: 0.4rem; }
+	.langs a, .langs span { border: 1.5px solid var(--line); border-radius: 999px; padding: 0 0.8em; text-decoration: none; color: var(--sub); }
+	.langs span { background: linear-gradient(100deg, var(--kgr), var(--kgm)); border: none; color: #fff; }
+
+	/* ---- mirror hero ---- */
+	.hero {
+		background: linear-gradient(105deg, var(--kgr-bg) 0%, var(--kgr-bg) 47%, var(--kgm-bg) 53%, var(--kgm-bg) 100%);
+		border-bottom: 1px solid var(--line);
+	}
+	.hero-inner {
+		max-width: 60rem; margin: 0 auto;
+		display: grid; grid-template-columns: auto 1fr auto; gap: 0.5rem;
+		align-items: end; padding: 1.5rem clamp(0.5rem, 3vw, 2rem) 0;
+	}
+	.hero .chara { width: clamp(90px, 15vw, 170px); }
+	.hero-center { text-align: center; padding-bottom: 2.2rem; align-self: center; }
+	.hero-logo { max-width: min(30rem, 88%); margin: 0 auto 0.8rem; }
+	.tagline { font-size: 1.02rem; margin-bottom: 0.5rem; }
+	.hero .facts-line { font-size: 0.85rem; color: var(--sub); margin-bottom: 1.4rem; }
+	.actions { display: flex; flex-wrap: wrap; gap: 0.7rem; justify-content: center; }
+	.btn { display: inline-block; text-decoration: none; font-weight: bold; padding: 0.55em 1.6em; border-radius: 999px; font-size: 0.95rem; }
+	.btn.primary { background: linear-gradient(100deg, var(--kgr-deep), var(--kgm-deep)); color: #fff; }
+	.btn.primary:hover { opacity: 0.88; }
+	.btn.ghost { border: 1.5px solid var(--kgm); color: var(--kgm-deep); background: rgba(255, 255, 255, 0.6); }
+	.btn.ghost:hover { background: #fff; }
+	@media (max-width: 640px) {
+		.hero-inner { grid-template-columns: 1fr 1fr; padding-top: 1rem; }
+		.hero-center { grid-column: 1 / -1; order: -1; }
+		.hero .chara { width: 130px; margin: 0 auto; }
+	}
+
+	/* ---- mirror headings ---- */
+	section { margin-top: 3.2rem; }
+	h2 { text-align: center; font-size: 1.3rem; letter-spacing: 0.15em; margin-bottom: 1.4rem; display: flex; align-items: center; justify-content: center; gap: 0.8em; }
+	h2::before, h2::after { content: ""; width: 0.5em; height: 0.5em; border-radius: 50%; flex: none; }
+	h2::before { background: var(--kgr); }
+	h2::after { background: var(--kgm); }
+
+	/* ---- facts ---- */
+	.facts { width: 100%; max-width: 40rem; margin: 0 auto; border-collapse: collapse; font-size: 0.93rem; }
+	.facts th, .facts td { text-align: left; padding: 0.55em 1em; vertical-align: top; }
+	.facts tr:nth-child(odd) { background: var(--kgr-bg); }
+	.facts tr:nth-child(even) { background: var(--kgm-bg); }
+	.facts th { color: var(--sub); font-weight: normal; white-space: nowrap; width: 8.5em; }
+
+	/* ---- prose ---- */
+	.prose { max-width: 38em; margin: 0 auto; }
+	.prose p { margin-bottom: 1.3em; }
+	.prose .kgr { color: var(--kgr-deep); font-weight: bold; }
+	.prose .kgm { color: var(--kgm-deep); font-weight: bold; }
+
+	/* ---- characters ---- */
+	.chars { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; max-width: 46rem; margin: 0 auto; }
+	.char-card { border-radius: 16px; padding: 1.4rem 1.3rem 1.6rem; text-align: center; }
+	.char-card.kgr { background: var(--kgr-bg); border: 2px solid var(--kgr); }
+	.char-card.kgm { background: var(--kgm-bg); border: 2px solid var(--kgm); }
+	.char-card img { height: 240px; width: auto; margin: 0 auto 0.9rem; }
+	.char-card h3 { font-size: 1.1rem; letter-spacing: 0.1em; margin-bottom: 0.15rem; }
+	.char-card.kgr h3 { color: var(--kgr-deep); }
+	.char-card.kgm h3 { color: var(--kgm-deep); }
+	.char-card .role { font-size: 0.78rem; color: var(--sub); margin-bottom: 0.7rem; }
+	.char-card p { font-size: 0.86rem; text-align: left; }
+	@media (max-width: 560px) { .chars { grid-template-columns: 1fr; } }
+
+	/* ---- steps ---- */
+	.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 1rem; max-width: 46rem; margin: 0 auto; }
+	.step { border: 1.5px solid var(--line); background: #fff; border-radius: 14px; padding: 1rem 1.1rem; }
+	.step .n { font-weight: bold; font-size: 0.8rem; letter-spacing: 0.1em; }
+	.step:nth-child(1) .n { color: var(--kgr-deep); }
+	.step:nth-child(2) .n { color: var(--kgm-deep); }
+	.step:nth-child(3) .n { background: linear-gradient(100deg, var(--kgr-deep), var(--kgm-deep)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+	.step h3 { font-size: 0.98rem; margin: 0.2rem 0 0.5rem; }
+	.step p { font-size: 0.86rem; }
+
+	/* ---- gallery ---- */
+	.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1.1rem; }
+	.gallery figure { border: 1.5px solid var(--line); border-radius: 12px; overflow: hidden; background: #fff; }
+	.gallery img { width: 100%; }
+	.gallery figcaption { font-size: 0.78rem; color: var(--sub); padding: 0.55rem 0.8rem; }
+
+	/* ---- faq ---- */
+	.faq { max-width: 40rem; margin: 0 auto; }
+	.faq dt { font-weight: bold; margin-top: 1.2em; color: var(--kgm-deep); }
+	.faq dt::before { content: "Q. "; color: var(--kgr-deep); }
+	.faq dd { margin-left: 1.6em; }
+
+	/* ---- title art footer ---- */
+	.artband { margin-top: 3.5rem; }
+	.artband img { width: 100%; border-top: 1px solid var(--line); }
+
+	footer { padding: 1.4rem 0 2rem; font-size: 0.82rem; color: var(--sub); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
+	footer a { color: var(--sub); }
+</style>
+{{ end }}
+
+{{ define "main" }}
+{{- $p := .Params }}
+<div class="hero">
+	<div class="wrap top">
+		<a class="home" href="{{ site.Home.Permalink }}">{{ $p.back_home }}</a>
+		<nav class="langs">
+			<span>{{ site.Language.Label }}</span>
+			{{- range .Translations }}<a href="{{ .Permalink }}">{{ .Language.Label }}</a>{{ end }}
+		</nav>
+	</div>
+	<div class="hero-inner">
+		<img class="chara" src="/doppeltest/kagari.webp" alt="{{ $p.kagari_alt }}">
+		<div class="hero-center">
+			<img class="hero-logo" src="{{ $p.logo }}" alt="{{ .Title }}" width="900" height="458">
+			<p class="tagline serif">{{ $p.tagline }}</p>
+			<p class="facts-line">{{ $p.facts_line }}</p>
+			<div class="actions">
+				<a class="btn primary" href="{{ $p.steam_url }}">{{ $p.steam_label }}</a>
+				<a class="btn ghost" href="{{ $p.ost_url }}">{{ $p.ost_label }}</a>
+			</div>
+		</div>
+		<img class="chara" src="/doppeltest/kagami.webp" alt="{{ $p.kagami_alt }}">
+	</div>
+</div>
+
+<div class="wrap">
+	<section>
+		<h2 class="serif">{{ $p.facts_title }}</h2>
+		<table class="facts">
+			{{- range $p.facts }}
+			<tr><th>{{ .label }}</th><td>{{ .value }}</td></tr>
+			{{- end }}
+		</table>
+	</section>
+
+	<section>
+		<h2 class="serif">{{ $p.about_title }}</h2>
+		<div class="prose">{{ .Content }}</div>
+	</section>
+
+	<section>
+		<h2 class="serif">{{ $p.chars_title }}</h2>
+		<div class="chars">
+			<div class="char-card kgr">
+				<img src="/doppeltest/kagari.webp" alt="{{ $p.kagari_alt }}" loading="lazy">
+				<h3>{{ $p.kagari_name }}</h3>
+				<div class="role">{{ $p.kagari_role }}</div>
+				<p>{{ $p.kagari_desc }}</p>
+			</div>
+			<div class="char-card kgm">
+				<img src="/doppeltest/kagami.webp" alt="{{ $p.kagami_alt }}" loading="lazy">
+				<h3>{{ $p.kagami_name }}</h3>
+				<div class="role">{{ $p.kagami_role }}</div>
+				<p>{{ $p.kagami_desc }}</p>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<h2 class="serif">{{ $p.steps_title }}</h2>
+		<div class="steps">
+			{{- range $p.steps }}
+			<div class="step">
+				<div class="n">{{ .n }}</div>
+				<h3>{{ .title }}</h3>
+				<p>{{ .body }}</p>
+			</div>
+			{{- end }}
+		</div>
+	</section>
+
+	<section>
+		<h2 class="serif">{{ $p.gallery_title }}</h2>
+		<div class="gallery">
+			{{- range $p.gallery }}
+			<figure>
+				<img src="{{ .src }}" alt="{{ .alt }}" loading="lazy" width="1000" height="563">
+				<figcaption>{{ .caption }}</figcaption>
+			</figure>
+			{{- end }}
+		</div>
+	</section>
+
+	<section>
+		<h2 class="serif">FAQ</h2>
+		<dl class="faq">
+			{{- range $p.faq }}
+			<dt>{{ .q }}</dt><dd>{{ .a }}</dd>
+			{{- end }}
+		</dl>
+	</section>
+</div>
+
+<div class="artband">
+	<img src="/doppeltest/titleart.webp" alt="{{ $p.titleart_alt }}" loading="lazy">
+</div>
+<div class="wrap">
+	<footer>
+		<a href="{{ site.Home.Permalink }}">← {{ $p.back_home }}</a>
+		<span>{{ $p.credits }}</span>
+	</footer>
+</div>
+
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "VideoGame",
+	"name": {{ .Title | jsonify }},
+	"alternateName": {{ $p.alt_names | jsonify }},
+	"description": {{ .Description | jsonify }},
+	"url": {{ .Permalink | jsonify }},
+	"image": {{ $p.og_image | absURL | jsonify }},
+	"inLanguage": ["ja", "en"],
+	"genre": {{ $p.genres | jsonify }},
+	"gamePlatform": "PC (Steam, Windows)",
+	"playMode": "SinglePlayer",
+	"applicationCategory": "Game",
+	"operatingSystem": "Windows",
+	"datePublished": "2026-03-19",
+	"offers": { "@type": "Offer", "price": "580", "priceCurrency": "JPY", "url": {{ $p.steam_url | jsonify }}, "availability": "https://schema.org/InStock" },
+	"author": { "@type": "Organization", "name": {{ $p.dev_name | jsonify }}, "url": {{ site.Home.Permalink | jsonify }} },
+	"sameAs": [ {{ $p.steam_url | jsonify }} ]
+}
+</script>
+{{ end }}
