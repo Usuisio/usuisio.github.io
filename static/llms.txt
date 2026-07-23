@@ -7,7 +7,7 @@
 
 - [人類をダメにするマザーAI](https://usuisio.github.io/hitodame/): 5×5の箱庭にタイルを置いて人類を甘やかし「しあわせ❤」を集める管理シミュレーション。25日制・約30分・無料・ブラウザ（unityroom / itch.io）・日英対応 ([English page](https://usuisio.github.io/en/hitodame/))
 - [リペア・ザ・ココロ / Repair the Cocoro](https://usuisio.github.io/repair-the-cocoro/): ブラウザの開発者コンソール（F12）に本物のコマンドを打ちこんで、こわれた子守ロボットを修理するテキストアドベンチャー。約15分・無料・PCブラウザ専用・日英韓対応・マルチエンディング ([English page](https://usuisio.github.io/en/repair-the-cocoro/))
-- [DoppelTest（ドッペルテスト）](https://usuisio.github.io/doppeltest/): ひきこもりの子カガリと、身代わりを務めるロボットカガミの「どちらが本物か」を審査する14日間を見守るアドベンチャー。1ルート約1時間・マルチエンディング・[Steam](https://store.steampowered.com/app/3849320/)で￥580・日英対応 ([English page](https://usuisio.github.io/en/doppeltest/))
+- [DoppelTest（ドッペルテスト）](https://usuisio.github.io/doppeltest/): 社会になじめない子カガリと、身代わりを務めるロボットカガミの「どちらが本物か」を審査する14日間を見守るアドベンチャー。1ルート約1時間・マルチエンディング・[Steam](https://store.steampowered.com/app/3849320/)で￥580・日英対応 ([English page](https://usuisio.github.io/en/doppeltest/))
 - [その他の作品一覧（unityroom）](https://unityroom.com/users/usuisio)
 
 ## リンク / Links

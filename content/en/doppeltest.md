@@ -1,6 +1,6 @@
 ---
 title: DoppelTest
-description: Kagari, a withdrawn child, and Kagami, the robot who lives in society as their stand-in. A gentle adventure watching over the 14 days that decide which of them is "the real one". ¥580 on Steam, Japanese/English, multiple endings.
+description: Kagari, a child who can't quite fit into society, and Kagami, the robot who lives there as their stand-in. A gentle adventure watching over the 14 days that decide which of them is "the real one". ¥580 on Steam, Japanese/English, multiple endings.
 type: doppeltest
 params:
   logo: /doppeltest/logo-en.webp
@@ -19,7 +19,7 @@ params:
   kagari_alt: Kagari, a long-haired child in a white hoodie
   kagami_alt: Kagami, a robot with the same hairstyle as Kagari, antennae on her head, a white dress and mechanical joints
   titleart_alt: Title art. On a desk, an envelope with a letter and a photo frame holding a picture of the robot
-  facts_title: Examination Summary
+  facts_title: Overview
   facts:
     - { label: Genre, value: A watch-over adventure (visual novel + task assignment) }
     - { label: Price, value: ¥580 on Steam (bundle with the soundtrack available) }
@@ -33,7 +33,7 @@ params:
   about_title: The Story
   chars_title: The Two "Kagaris"
   kagari_name: Kagari
-  kagari_role: Human — a withdrawn child
+  kagari_role: Human — a child who can't quite fit in
   kagari_desc: Going outside is hard, so the days pass at home, while a stand-in robot handles life in society. But when "the real one" is put under examination — what will Kagari feel?
   kagami_name: Kagami
   kagami_role: Robot — Kagari's stand-in
@@ -63,8 +63,8 @@ params:
     - { q: What languages are supported?, a: Japanese and English. }
 ---
 
-<span class="kgr">Kagari</span> is a child who rarely leaves home. <span class="kgm">Kagami</span> is the robot who goes to school and lives in society in Kagari's place. One day, a clerical error at city hall registers the robot Kagami as "the real Kagari".
+<span class="kgr">Kagari</span> is a child who can't quite fit into society. <span class="kgm">Kagami</span> is the robot who goes to school and lives in town in Kagari's place. One day, a clerical error at city hall registers the robot Kagami as "the real Kagari".
 
-Which of them is the real one? That's for the examination system — the <em>DoppelTest</em> — to decide. The deadline is 14 days, and whoever lives more "like Kagari" will be registered as real. And yet the two of them, far from fighting over the title, keep trying to hand it to each other.
+Which of them is the real one? An examination will decide. The deadline is 14 days, and whoever lives more "like Kagari" will be registered as real. And yet the two of them, far from fighting over the title, keep trying to hand it to each other.
 
 This is not a story of humans versus robots. It's the story of 14 days between two people who care for each other — with you gently watching over them.

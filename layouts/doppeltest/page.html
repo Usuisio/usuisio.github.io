@@ -43,6 +43,7 @@
 		align-items: end; padding: 1.5rem clamp(0.5rem, 3vw, 2rem) 0;
 	}
 	.hero .chara { width: clamp(90px, 15vw, 170px); }
+	.hero .chara.flip { transform: scaleX(-1); }
 	.hero-center { text-align: center; padding-bottom: 2.2rem; align-self: center; }
 	.hero-logo { max-width: min(30rem, 88%); margin: 0 auto 0.8rem; }
 	.tagline { font-size: 1.02rem; margin-bottom: 0.5rem; }
@@ -144,7 +145,7 @@
 				<a class="btn ghost" href="{{ $p.ost_url }}">{{ $p.ost_label }}</a>
 			</div>
 		</div>
-		<img class="chara" src="/doppeltest/kagami.webp" alt="{{ $p.kagami_alt }}">
+		<img class="chara flip" src="/doppeltest/kagami.webp" alt="{{ $p.kagami_alt }}">
 	</div>
 </div>
 
