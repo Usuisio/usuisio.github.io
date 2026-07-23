@@ -1,5 +1,5 @@
 ---
-title: Is this... emotion...?
+title: I love this!
 description: A two-panel fan comic of Kagami, the robot from DoppelTest. One moment she is in tears wondering "is this... emotion?", the next she cheerfully declares she keeps emotions switched off — "they're heavy and irrational!". Posted on Twitter (X).
 date: 2026-02-15
 type: gallery
