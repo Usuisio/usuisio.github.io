@@ -39,6 +39,7 @@ params:
     - src: /poklatte/ss-oresama.webp
       alt: Poklatte staring at the player and speaking in a bold tone
       caption: Another side of Poklatte.
+  gallery_more: { label: "→ Gallery: Poklatte illustrations & concept art", url: "/gallery/poklatte/" }
   faq:
     - { q: Is it free?, a: Yes — it plays in the browser for free, on both unityroom and itch.io. }
     - { q: How long is it?, a: A short piece, about 3 minutes per playthrough. }

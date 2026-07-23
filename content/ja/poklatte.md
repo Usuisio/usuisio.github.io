@@ -39,6 +39,7 @@ params:
     - src: /poklatte/ss-oresama.webp
       alt: ポクラッテがこちらを見つめて強気の口調で話す場面
       caption: 「よそ見してねえで、俺様だけ見てろ。」
+  gallery_more: { label: "→ ギャラリー：ポクラッテのイラスト・設定画", url: "/gallery/poklatte/" }
   faq:
     - { q: 無料で遊べますか？, a: はい。unityroomとitch.ioのどちらでも、ブラウザから無料で遊べます。 }
     - { q: どのくらいの長さですか？, a: 1プレイ約3分の短編です。 }
