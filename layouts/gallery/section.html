@@ -98,7 +98,7 @@
 			{{- end }}
 			<div class="pad">
 				<div class="t">{{ .Title }}</div>
-				<div class="m">{{ with .Params.kind }}{{ . }} · {{ end }}{{ .Date | time.Format "2006-01-02" }}{{ if $isRoot }} · {{ .CurrentSection.Title }}{{ end }}</div>
+				<div class="m">{{ with .Params.kind }}{{ . }} · {{ end }}{{ .Params.date_text | default (.Date | time.Format "2006-01-02") }}{{ if $isRoot }} · {{ .CurrentSection.Title }}{{ end }}</div>
 			</div>
 		</a>
 		{{- end }}

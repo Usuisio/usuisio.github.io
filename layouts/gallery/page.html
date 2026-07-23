@@ -72,7 +72,7 @@
 	<article>
 		<h1>{{ .Title }}</h1>
 		<p class="meta">
-			{{ with .Params.kind }}{{ . }} · {{ end }}{{ $rp.label_date }}：{{ .Date | time.Format "2006-01-02" }}
+			{{ with .Params.kind }}{{ . }} · {{ end }}{{ $rp.label_date }}：{{ .Params.date_text | default (.Date | time.Format "2006-01-02") }}
 			{{- with $game }} · {{ $rp.label_game }}：<a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}
 		</p>
 
