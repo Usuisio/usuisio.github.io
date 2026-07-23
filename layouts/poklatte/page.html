@@ -171,21 +171,21 @@
 {
 	"@context": "https://schema.org",
 	"@type": "VideoGame",
-	"name": {{ .Title | jsonify }},
-	"alternateName": {{ $p.alt_names | jsonify }},
-	"description": {{ .Description | jsonify }},
-	"url": {{ .Permalink | jsonify }},
-	"image": {{ "/poklatte/og-poklatte.jpg" | absURL | jsonify }},
+	"name": {{ .Title }},
+	"alternateName": {{ $p.alt_names }},
+	"description": {{ .Description }},
+	"url": {{ .Permalink }},
+	"image": {{ "/poklatte/og-poklatte.jpg" | absURL }},
 	"inLanguage": ["ja", "en"],
-	"genre": {{ $p.genres | jsonify }},
+	"genre": {{ $p.genres }},
 	"gamePlatform": "Web browser",
 	"playMode": "SinglePlayer",
 	"applicationCategory": "Game",
 	"operatingSystem": "Web",
 	"datePublished": "2024-11-17",
 	"offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY", "availability": "https://schema.org/InStock" },
-	"author": { "@type": "Organization", "name": {{ $p.dev_name | jsonify }}, "url": {{ site.Home.Permalink | jsonify }} },
-	"sameAs": [ {{ $p.play_url | jsonify }}, {{ $p.itch_url | jsonify }} ]
+	"author": { "@type": "Organization", "name": {{ $p.dev_name }}, "url": {{ site.Home.Permalink }} },
+	"sameAs": [ {{ $p.play_url }}, {{ $p.itch_url }} ]
 }
 </script>
 {{ end }}

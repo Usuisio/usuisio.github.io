@@ -235,21 +235,21 @@
 {
 	"@context": "https://schema.org",
 	"@type": "VideoGame",
-	"name": {{ .Title | jsonify }},
-	"alternateName": {{ $p.alt_names | jsonify }},
-	"description": {{ .Description | jsonify }},
-	"url": {{ .Permalink | jsonify }},
-	"image": {{ $p.og_image | absURL | jsonify }},
+	"name": {{ .Title }},
+	"alternateName": {{ $p.alt_names }},
+	"description": {{ .Description }},
+	"url": {{ .Permalink }},
+	"image": {{ $p.og_image | absURL }},
 	"inLanguage": ["ja", "en"],
-	"genre": {{ $p.genres | jsonify }},
+	"genre": {{ $p.genres }},
 	"gamePlatform": "PC (Steam, Windows)",
 	"playMode": "SinglePlayer",
 	"applicationCategory": "Game",
 	"operatingSystem": "Windows",
 	"datePublished": "2026-03-19",
-	"offers": { "@type": "Offer", "price": "580", "priceCurrency": "JPY", "url": {{ $p.steam_url | jsonify }}, "availability": "https://schema.org/InStock" },
-	"author": { "@type": "Organization", "name": {{ $p.dev_name | jsonify }}, "url": {{ site.Home.Permalink | jsonify }} },
-	"sameAs": [ {{ $p.steam_url | jsonify }} ]
+	"offers": { "@type": "Offer", "price": "580", "priceCurrency": "JPY", "url": {{ $p.steam_url }}, "availability": "https://schema.org/InStock" },
+	"author": { "@type": "Organization", "name": {{ $p.dev_name }}, "url": {{ site.Home.Permalink }} },
+	"sameAs": [ {{ $p.steam_url }} ]
 }
 </script>
 {{ end }}
