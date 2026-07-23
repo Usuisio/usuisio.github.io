@@ -35,6 +35,8 @@ params:
       external: true
   more_label: unityroomの作品一覧はこちら
   more_url: https://unityroom.com/users/usuisio
+  gallery_label: ギャラリー ── イラストやラフのまとめ
+  gallery_url: /gallery/
   org_name: ぬくもりロボット工房
   org_alt: Nukumori Robot Workshop
   sameas: ["https://unityroom.com/users/usuisio", "https://usuisio.itch.io"]

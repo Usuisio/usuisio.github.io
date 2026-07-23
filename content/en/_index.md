@@ -35,6 +35,8 @@ params:
       external: true
   more_label: More games on unityroom (Japanese)
   more_url: https://unityroom.com/users/usuisio
+  gallery_label: Gallery — illustrations & sketches
+  gallery_url: /gallery/
   org_name: Nukumori Robot Workshop
   org_alt: ぬくもりロボット工房
   sameas: ["https://unityroom.com/users/usuisio", "https://usuisio.itch.io"]

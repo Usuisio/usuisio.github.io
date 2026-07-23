@@ -1,0 +1,119 @@
+{{ define "head" }}
+{{- $t := .CurrentSection.Params.theme | default dict }}
+<style>
+	:root {
+		--bg: {{ $t.bg | default "#faf3e7" | safeCSS }};
+		--panel: {{ $t.panel | default "#fffaf2" | safeCSS }};
+		--ink: {{ $t.ink | default "#4a3728" | safeCSS }};
+		--accent: {{ $t.accent | default "#e8843c" | safeCSS }};
+		--dim: {{ $t.dim | default "#8a7361" | safeCSS }};
+		--line: {{ $t.line | default "#e6d9c3" | safeCSS }};
+	}
+	* { margin: 0; padding: 0; box-sizing: border-box; }
+	body {
+		background: var(--bg);
+		color: var(--ink);
+		font-family: {{ $t.font | default `"Hiragino Maru Gothic ProN", "Yu Gothic UI", sans-serif` | safeCSS }};
+		line-height: 1.85;
+		padding: 1rem;
+		-webkit-font-smoothing: antialiased;
+	}
+	.wrap { max-width: 46rem; margin: 0 auto; }
+	a { color: var(--accent); }
+	img { display: block; max-width: 100%; height: auto; }
+
+	.top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; font-size: 0.82rem; color: var(--dim); padding-bottom: 1.5rem; }
+	.top a { color: var(--dim); text-decoration: none; }
+	.top a:hover { color: var(--ink); }
+	.langs { display: flex; gap: 0.5rem; }
+	.langs .on { color: var(--accent); }
+
+	h1 { font-size: clamp(1.3rem, 4.5vw, 1.8rem); line-height: 1.55; margin-bottom: 0.4rem; }
+	.meta { font-size: 0.82rem; color: var(--dim); margin-bottom: 1.6rem; }
+	.meta a { color: var(--dim); }
+
+	figure { border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--panel); margin-bottom: 1.2rem; }
+	figure img { width: 100%; background: #fff; }
+	figcaption { font-size: 0.8rem; color: var(--dim); padding: 0.6rem 0.9rem; border-top: 1px solid var(--line); }
+
+	.prose { margin-top: 1.6rem; }
+	.prose p { margin-bottom: 1.1em; max-width: 40em; }
+	.prose code { background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent); padding: 0.05em 0.45em; border-radius: 4px; font-size: 0.92em; }
+
+	.pn { display: flex; justify-content: space-between; gap: 1rem; margin-top: 2.4rem; font-size: 0.86rem; }
+	.pn a { text-decoration: none; }
+	.pn a:hover { text-decoration: underline; }
+
+	footer { margin-top: 3rem; border-top: 1px solid var(--line); padding-top: 1.2rem; font-size: 0.82rem; color: var(--dim); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
+	footer a { color: var(--dim); }
+</style>
+{{- $first := index .Params.images 0 }}
+{{- with $first }}{{ with resources.Get .src }}
+{{- $og := .Fill "1200x630 jpg q88" }}
+<meta property="og:image" content="{{ $og.Permalink }}">
+<meta name="twitter:card" content="summary_large_image">
+{{- end }}{{ end }}
+{{ end }}
+
+{{ define "main" }}
+{{- $root := .FirstSection }}
+{{- $rp := $root.Params }}
+{{- $section := .CurrentSection }}
+{{- $game := "" }}{{ with $section.Params.game }}{{ $game = site.GetPage . }}{{ end }}
+<div class="wrap">
+	<div class="top">
+		<a href="{{ $section.RelPermalink }}">← {{ $section.Title }}</a>
+		<nav class="langs">
+			<span class="on">{{ site.Language.Label }}</span>
+			{{- range .Translations }}<a href="{{ .Permalink }}">{{ .Language.Label }}</a>{{ end }}
+		</nav>
+	</div>
+
+	<article>
+		<h1>{{ .Title }}</h1>
+		<p class="meta">
+			{{ with .Params.kind }}{{ . }} · {{ end }}{{ $rp.label_date }}：{{ .Date | time.Format "2006-01-02" }}
+			{{- with $game }} · {{ $rp.label_game }}：<a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}
+		</p>
+
+		{{- range $i, $img := .Params.images }}
+		{{- with resources.Get $img.src }}
+		{{- $view := .Resize "1400x webp q90" }}
+		<figure>
+			<img src="{{ $view.RelPermalink }}" alt="{{ $img.alt }}" width="{{ $view.Width }}" height="{{ $view.Height }}"{{ if gt $i 0 }} loading="lazy"{{ end }}>
+			{{- with $img.caption }}<figcaption>{{ . }}</figcaption>{{ end }}
+		</figure>
+		{{- end }}
+		{{- end }}
+
+		<div class="prose">{{ .Content }}</div>
+	</article>
+
+	<nav class="pn">
+		<span>{{ with .NextInSection }}<a href="{{ .RelPermalink }}">← {{ .Title }}</a>{{ end }}</span>
+		<span>{{ with .PrevInSection }}<a href="{{ .RelPermalink }}">{{ .Title }} →</a>{{ end }}</span>
+	</nav>
+
+	<footer>
+		<a href="{{ $root.RelPermalink }}">← {{ $rp.label_all }}</a>
+		{{- with $game }}<a href="{{ .RelPermalink }}">{{ $rp.label_game_page }}：{{ .Title }}</a>{{ end }}
+		<a href="{{ site.Home.Permalink }}">{{ $rp.back_home }}</a>
+	</footer>
+</div>
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "VisualArtwork",
+	"name": {{ .Title }},
+	"description": {{ .Description }},
+	"url": {{ .Permalink }},
+	"image": [{{ range $i, $img := .Params.images }}{{ if $i }},{{ end }}{{ with resources.Get $img.src }}{{ (.Resize "1400x webp q90").Permalink }}{{ end }}{{ end }}],
+	"dateCreated": {{ .Date | time.Format "2006-01-02" }},
+	"inLanguage": {{ site.Language.Locale }},
+	"creator": { "@type": "Organization", "name": {{ site.Title }}, "url": {{ site.Home.Permalink }} }
+	{{- with $game }},
+	"about": { "@type": "VideoGame", "name": {{ .Title }}, "url": {{ .Permalink }} }
+	{{- end }}
+}
+</script>
+{{ end }}

@@ -35,6 +35,7 @@ params:
     - src: /cocoro/check-ja.webp
       alt: コンソールにCHECK()を入力した結果、「診断プログラムを起動します。」とシアン色の文字で表示されている
       caption: F12で CHECK() を実行 → ロコロの診断が始まる。
+  gallery_more: { label: "→ ギャラリー：ロコロのイラスト・設定ラフ", url: "/gallery/repair-the-cocoro/" }
   steps_title: 遊び方
   steps:
     - { n: STEP 01, title: 言語を選んで、話を聞く, body: "まずは3言語から1つ選択。ロコロの相談を聞いて、選択肢で会話を進めます。ここはマウスだけでOK。" }
