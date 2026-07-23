@@ -1,5 +1,5 @@
 ---
-title: DoppelTestの部屋
+title: ドッペルテストの部屋
 description: 「どちらが本物か」を審査する14日間を見守るアドベンチャー「DoppelTest（ドッペルテスト）」のギャラリー。カガリとカガミのイラスト・設定ラフを展示しています。
 type: gallery
 params:
