@@ -26,12 +26,11 @@ params:
       alt: DoppelTest key art with Kagari and the robot Kagami facing each other
       tags: [Steam]
     - title: Hack Poklatte!
-      blurb: Become an evil genius hacker — sneak into the mansion and hack the maid robot into revealing where the treasure is.
-      url: https://usuisio.itch.io/hack-poklatte
+      blurb: Become an evil genius hacker — sneak into the mansion and hack the maid robot into revealing where the treasure is. About 3 minutes.
+      url: /en/poklatte/
       img: /img/poklatte.webp
       alt: Close-up of Poklatte, the maid robot from Hack Poklatte!
       tags: [Browser, Free]
-      external: true
   more_label: More games on unityroom (Japanese)
   more_url: https://unityroom.com/users/usuisio
   gallery_label: Gallery — illustrations & sketches

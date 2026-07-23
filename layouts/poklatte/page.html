@@ -1,0 +1,188 @@
+{{ define "head" }}
+<style>
+	@font-face {
+		font-family: "Zen Maru Gothic";
+		src: url("/fonts/ZenMaruGothic-Medium-sub.woff2") format("woff2");
+		font-weight: 500;
+		font-display: swap;
+	}
+	@font-face {
+		font-family: "Zen Maru Gothic";
+		src: url("/fonts/ZenMaruGothic-Bold-sub.woff2") format("woff2");
+		font-weight: 700;
+		font-display: swap;
+	}
+	:root {
+		--bg: #fff5f9;
+		--ink: #533a46;
+		--sub: #a0808f;
+		--pink: #e8637f;
+		--pink-deep: #d14a68;
+		--pink-soft: #fbdde7;
+		--blue: #4a9fd8;
+		--line: #f3d9e2;
+	}
+	* { margin: 0; padding: 0; box-sizing: border-box; }
+	body {
+		background-color: var(--bg);
+		background-image: radial-gradient(var(--pink-soft) 12%, transparent 13%), radial-gradient(var(--pink-soft) 12%, transparent 13%);
+		background-size: 46px 46px;
+		background-position: 0 0, 23px 23px;
+		color: var(--ink);
+		font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Yu Gothic UI", sans-serif;
+		font-weight: 500;
+		line-height: 1.95;
+	}
+	.wrap { max-width: 52rem; margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2.5rem) 2.5rem; }
+	a { color: var(--pink-deep); }
+	img { display: block; max-width: 100%; height: auto; }
+
+	/* ---- top ---- */
+	.top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; font-size: 0.82rem; padding: 1rem 0 1.6rem; }
+	.top .home { color: var(--sub); text-decoration: none; }
+	.top .home:hover { color: var(--ink); }
+	.langs { display: flex; gap: 0.4rem; }
+	.langs a, .langs span { border: 2px solid var(--line); border-radius: 999px; padding: 0 0.8em; text-decoration: none; color: var(--sub); background: #fff; }
+	.langs span { background: var(--pink); border-color: var(--pink); color: #fff; }
+
+	/* ---- hero ---- */
+	.hero { text-align: center; }
+	h1 {
+		font-size: clamp(1.7rem, 5.5vw, 2.5rem);
+		font-weight: 700;
+		color: var(--pink);
+		letter-spacing: 0.04em;
+		line-height: 1.4;
+		text-shadow: 2px 2px 0 #fff;
+	}
+	.subtitle { color: var(--sub); font-size: 0.92rem; margin: 0.2rem 0 1.2rem; }
+	.hero-shot { border: 4px solid #fff; border-radius: 18px; box-shadow: 0 6px 24px rgba(232, 99, 127, 0.25); margin: 0 auto 1.5rem; }
+	.actions { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; margin-bottom: 0.6rem; }
+	.btn { display: inline-block; text-decoration: none; font-weight: 700; padding: 0.6em 1.7em; border-radius: 999px; font-size: 0.98rem; }
+	.btn.primary { background: var(--pink); color: #fff; box-shadow: 0 3px 0 var(--pink-deep); }
+	.btn.primary:hover { transform: translateY(1px); box-shadow: 0 2px 0 var(--pink-deep); }
+	.btn.ghost { border: 2px solid var(--pink); color: var(--pink-deep); background: #fff; }
+	.btn.ghost:hover { background: var(--pink-soft); }
+	.free-note { font-size: 0.82rem; color: var(--sub); }
+
+	/* ---- sections ---- */
+	section { margin-top: 3rem; }
+	h2 {
+		font-size: 1.2rem; font-weight: 700; text-align: center; margin-bottom: 1.3rem;
+		display: flex; align-items: center; justify-content: center; gap: 0.7em;
+	}
+	h2::before, h2::after { content: "♪"; color: var(--pink); font-size: 0.8em; }
+
+	/* ---- facts ---- */
+	.facts { width: 100%; max-width: 36rem; margin: 0 auto; border-collapse: separate; border-spacing: 0 6px; font-size: 0.93rem; }
+	.facts th, .facts td { text-align: left; padding: 0.4em 1.1em; vertical-align: top; background: #fff; }
+	.facts th { color: var(--pink-deep); font-weight: 700; white-space: nowrap; width: 8em; border-radius: 12px 0 0 12px; }
+	.facts td { border-radius: 0 12px 12px 0; }
+
+	/* ---- prose（あらすじ）---- */
+	.prose { max-width: 34em; margin: 0 auto; background: #fff; border-radius: 18px; padding: 1.6rem 1.8rem; border: 2px solid var(--line); }
+	.prose p { margin-bottom: 1.1em; }
+	.prose p:last-child { margin-bottom: 0; }
+
+	/* ---- gallery ---- */
+	.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1.2rem; }
+	.gallery figure { background: #fff; border-radius: 16px; overflow: hidden; border: 2px solid var(--line); }
+	.gallery img { width: 100%; }
+	.gallery figcaption { font-size: 0.8rem; color: var(--sub); padding: 0.6rem 0.9rem; }
+
+	/* ---- faq ---- */
+	.faq { max-width: 38rem; margin: 0 auto; }
+	.faq dt { font-weight: 700; color: var(--pink-deep); margin-top: 1.1em; }
+	.faq dt::before { content: "Q. "; }
+	.faq dd { margin-left: 1.6em; }
+
+	footer { margin-top: 3rem; border-top: 2px dashed var(--line); padding-top: 1.2rem; font-size: 0.82rem; color: var(--sub); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
+	footer a { color: var(--sub); }
+</style>
+{{ end }}
+
+{{ define "main" }}
+{{- $p := .Params }}
+<div class="wrap">
+	<div class="top">
+		<a class="home" href="{{ site.Home.Permalink }}">{{ $p.back_home }}</a>
+		<nav class="langs">
+			<span>{{ site.Language.Label }}</span>
+			{{- range .Translations }}<a href="{{ .Permalink }}">{{ .Language.Label }}</a>{{ end }}
+		</nav>
+	</div>
+
+	<div class="hero">
+		<h1>{{ .Title }}</h1>
+		<p class="subtitle">{{ $p.subtitle }}</p>
+		<img class="hero-shot" src="/poklatte/title.webp" alt="{{ $p.hero_alt }}" width="1000" height="647">
+		<div class="actions">
+			<a class="btn primary" href="{{ $p.play_url }}">{{ $p.play_label }}</a>
+			<a class="btn ghost" href="{{ $p.itch_url }}">{{ $p.itch_label }}</a>
+		</div>
+		<p class="free-note">{{ $p.free_note }}</p>
+	</div>
+
+	<section>
+		<h2>{{ $p.about_title }}</h2>
+		<div class="prose">{{ .Content }}</div>
+	</section>
+
+	<section>
+		<h2>{{ $p.facts_title }}</h2>
+		<table class="facts">
+			{{- range $p.facts }}
+			<tr><th>{{ .label }}</th><td>{{ .value }}</td></tr>
+			{{- end }}
+		</table>
+	</section>
+
+	<section>
+		<h2>{{ $p.gallery_title }}</h2>
+		<div class="gallery">
+			{{- range $p.gallery }}
+			<figure>
+				<img src="{{ .src }}" alt="{{ .alt }}" loading="lazy" width="1000" height="625">
+				<figcaption>{{ .caption }}</figcaption>
+			</figure>
+			{{- end }}
+		</div>
+	</section>
+
+	<section>
+		<h2>FAQ</h2>
+		<dl class="faq">
+			{{- range $p.faq }}
+			<dt>{{ .q }}</dt><dd>{{ .a }}</dd>
+			{{- end }}
+		</dl>
+	</section>
+
+	<footer>
+		<a href="{{ site.Home.Permalink }}">← {{ $p.back_home }}</a>
+		<span>{{ $p.credits }}</span>
+	</footer>
+</div>
+
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "VideoGame",
+	"name": {{ .Title | jsonify }},
+	"alternateName": {{ $p.alt_names | jsonify }},
+	"description": {{ .Description | jsonify }},
+	"url": {{ .Permalink | jsonify }},
+	"image": {{ "/poklatte/og-poklatte.jpg" | absURL | jsonify }},
+	"inLanguage": ["ja", "en"],
+	"genre": {{ $p.genres | jsonify }},
+	"gamePlatform": "Web browser",
+	"playMode": "SinglePlayer",
+	"applicationCategory": "Game",
+	"operatingSystem": "Web",
+	"datePublished": "2024-11-17",
+	"offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY", "availability": "https://schema.org/InStock" },
+	"author": { "@type": "Organization", "name": {{ $p.dev_name | jsonify }}, "url": {{ site.Home.Permalink | jsonify }} },
+	"sameAs": [ {{ $p.play_url | jsonify }}, {{ $p.itch_url | jsonify }} ]
+}
+</script>
+{{ end }}
