@@ -25,13 +25,12 @@ params:
       img: /img/doppeltest.webp
       alt: DoppelTestのキービジュアル。カガリとロボットのカガミが向かい合って立っている
       tags: [Steam, ￥580]
-    - title: Hack Poklatte!
-      blurb: 悪の天才ハッカーになって屋敷にしのびこみ、メイドロボをハックしてお宝のありかを聞き出すアドベンチャー。
-      url: https://usuisio.itch.io/hack-poklatte
+    - title: ハッキング・ポクラッテ！
+      blurb: 悪の天才ハッカーになってお屋敷に潜入し、メイドロボットをハッキングしてお宝のありかを聞き出すアドベンチャー。約3分。
+      url: /poklatte/
       img: /img/poklatte.webp
-      alt: Hack Poklatte! のメイドロボ、ポクラッテのアップ
+      alt: ハッキング・ポクラッテ！のメイドロボ、ポクラッテのアップ
       tags: [ブラウザ, 無料]
-      external: true
   more_label: unityroomの作品一覧はこちら
   more_url: https://unityroom.com/users/usuisio
   gallery_label: ギャラリー ── イラストやラフのまとめ
