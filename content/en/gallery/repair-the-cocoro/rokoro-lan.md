@@ -1,5 +1,5 @@
 ---
-title: What if Cocoro had an Ethernet port on her nape?
+title: Cocoro's Nape
 description: A two-panel fan illustration of Cocoro from Repair the Cocoro, imagining an Ethernet (LAN) port on the nape of her neck — before and after plugging in the cable.
 date: 2024-12-15
 type: gallery
