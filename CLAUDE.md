@@ -19,6 +19,11 @@
 - デプロイ: main に push → GitHub Actions（`hugo.yml`）が自動ビルド → Pages に反映
 - コミット＆プッシュは作業の区切りごとに随時行ってよい。
 
+## ギャラリー（content/<lang>/gallery/）の運用
+
+- 作品追加＝ `assets/gallery/<ゲーム>/` に原画を置き、作品 md を1つ書く。表示用 webp / OGP用 jpg はビルド時に自動生成される。展示室の配色は各室 `_index.md` の `params.theme` で切替。
+- 文章の分担：**alt・description・英訳など検索向けテキストは Claude が書いてよい**（事実描写ベースで充実させる。SEO/GEO はここが本体）。**caption・本文は人の目に触れる「作者の声」**なので、作者メモがあればそれを整えて使い、なければ事実だけの短文か省略でよい。作者が考えていない意図・感情を創作して足さない。
+
 ## ページ追加時の SEO/GEO チェックリスト
 
 - title / meta description（各言語）
