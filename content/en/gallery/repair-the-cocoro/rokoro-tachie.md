@@ -8,10 +8,8 @@ params:
   images:
     - src: gallery/repair-the-cocoro/rokoro-tachie-rough.png
       alt: Rough sketch of Cocoro drawn in red line art — a robot girl with a ponytail in a sitting pose, with cables connected around her
-      caption: The rough. At this stage the plan was to plug in lots of cables for a mid-maintenance look.
     - src: gallery/repair-the-cocoro/rokoro-tachie-clean.png
       alt: Finished character art of Cocoro. Long brown ponytail, light-blue rabbit-ear parts, white mechanical body with a dark panel on the chest, sitting and smiling at the viewer
-      caption: The final version. The cables were dropped when the art was fitted into the game.
 ---
 
 The rough and final versions of Cocoro's in-game character art. The rough had lots of cables plugged in for a maintenance feel, but they were dropped when the art was fitted into the game.

@@ -8,10 +8,8 @@ params:
   images:
     - src: gallery/repair-the-cocoro/rokoro-lan-port.png
       alt: ロコロのうなじのアップ。髪をかき上げると、首の後ろにEthernetポートのふたが開いていて、ロコロは頬を赤らめて振り返っている
-      caption: 髪をかき上げると、うなじにポートが。
     - src: gallery/repair-the-cocoro/rokoro-lan-plugged.png
       alt: ロコロのうなじに青いEthernetケーブルが挿さり、ポートのランプが黄色く点灯している。ロコロは音符を浮かべてごきげんな表情
-      caption: ケーブルを挿すと、ランプが点く。
 ---
 
 「ロコロのうなじに Ether ケーブルの口がついてたら」という妄想で描いた2枚組です。うなじのポートみたいな、細かいところでのロボットらしさを出したかった絵です。
