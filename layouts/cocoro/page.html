@@ -159,6 +159,9 @@
 			</figure>
 			{{- end }}
 		</div>
+		{{- with $p.gallery_more }}
+		<p style="margin-top: 0.9rem; font-size: 0.9rem;"><a href="{{ .url | relLangURL }}">{{ .label }}</a></p>
+		{{- end }}
 	</section>
 
 	<section>
@@ -197,21 +200,21 @@
 {
 	"@context": "https://schema.org",
 	"@type": "VideoGame",
-	"name": {{ .Title | jsonify }},
-	"alternateName": {{ $p.alt_names | jsonify }},
-	"description": {{ .Description | jsonify }},
-	"url": {{ .Permalink | jsonify }},
-	"image": {{ "/cocoro/og-cocoro.jpg" | absURL | jsonify }},
+	"name": {{ .Title }},
+	"alternateName": {{ $p.alt_names }},
+	"description": {{ .Description }},
+	"url": {{ .Permalink }},
+	"image": {{ "/cocoro/og-cocoro.jpg" | absURL }},
 	"inLanguage": ["ja", "en", "ko"],
-	"genre": {{ $p.genres | jsonify }},
+	"genre": {{ $p.genres }},
 	"gamePlatform": "PC (web browser)",
 	"playMode": "SinglePlayer",
 	"applicationCategory": "Game",
 	"operatingSystem": "Web browser (desktop)",
 	"datePublished": "2024-07",
 	"offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY", "availability": "https://schema.org/InStock" },
-	"author": { "@type": "Organization", "name": {{ $p.dev_name | jsonify }}, "url": {{ site.Home.Permalink | jsonify }} },
-	"sameAs": [ {{ $p.play_url | jsonify }} ]
+	"author": { "@type": "Organization", "name": {{ $p.dev_name }}, "url": {{ site.Home.Permalink }} },
+	"sameAs": [ {{ $p.play_url }} ]
 }
 </script>
 {{ end }}

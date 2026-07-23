@@ -145,6 +145,9 @@
 		{{- end }}
 	</div>
 	<a class="more" href="{{ $p.more_url }}" target="_blank" rel="noopener">{{ $p.more_label }} ↗</a>
+	{{- with $p.gallery_label }}
+	<a class="more" href="{{ $p.gallery_url | relLangURL }}">{{ . }}</a>
+	{{- end }}
 
 	<footer>
 		<div>{{ range $p.footer_links }}<a href="{{ .url }}" target="_blank" rel="noopener">{{ .label }} ↗</a>{{ end }}</div>
@@ -156,10 +159,10 @@
 {
 	"@context": "https://schema.org",
 	"@type": "Organization",
-	"name": {{ $p.org_name | jsonify }},
-	"alternateName": {{ $p.org_alt | jsonify }},
-	"url": {{ site.Home.Permalink | jsonify }},
-	"sameAs": {{ $p.sameas | jsonify }}
+	"name": {{ $p.org_name }},
+	"alternateName": {{ $p.org_alt }},
+	"url": {{ site.Home.Permalink }},
+	"sameAs": {{ $p.sameas }}
 }
 </script>
 {{ end }}
