@@ -19,6 +19,13 @@
 - デプロイ: main に push → GitHub Actions（`hugo.yml`）が自動ビルド → Pages に反映
 - コミット＆プッシュは作業の区切りごとに随時行ってよい。
 
+## ギャラリー（content/<lang>/gallery/）への作品追加
+
+- 原画を `assets/gallery/<ゲーム>/` に置き、`content/ja/gallery/<ゲーム>/<slug>.md` と `content/en/`（同じslug）を作る。表示用 webp / OGP用 jpg はビルド時に自動生成される。
+- 新しい展示室は `_index.md` を追加し、`params.game` でゲームページ、`params.theme` でそのゲームの配色を指定する。
+- 各作品 md に書くもの：title / description / alt / 本文1〜2文。作者がメモを添えたらそれをもとに書き、なければ画像の事実描写のみで書く。caption は書かない（必要な作品でのみ任意で付ける）。
+- ギャラリーのテンプレはシステムフォント使用のため、woff2 の再生成は不要。
+
 ## ページ追加時の SEO/GEO チェックリスト
 
 - title / meta description（各言語）
