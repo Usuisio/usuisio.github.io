@@ -150,7 +150,7 @@
 	{{- end }}
 
 	<footer>
-		<div>{{ range $p.footer_links }}<a href="{{ .url }}" target="_blank" rel="noopener">{{ .label }} ↗</a>{{ end }}</div>
+		<div>{{ with $p.about_label }}<a href="{{ $p.about_url | relLangURL }}">{{ . }}</a>{{ end }}{{ range $p.footer_links }}<a href="{{ .url }}" target="_blank" rel="noopener">{{ .label }} ↗</a>{{ end }}</div>
 		<div>{{ $p.copyright }}</div>
 	</footer>
 </div>

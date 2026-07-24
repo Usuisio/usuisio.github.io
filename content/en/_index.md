@@ -37,7 +37,9 @@ params:
   gallery_url: /gallery/
   org_name: Nukumori Robot Workshop
   org_alt: ぬくもりロボット工房
-  sameas: ["https://unityroom.com/users/usuisio", "https://usuisio.itch.io"]
+  sameas: ["https://x.com/ususio0unity", "https://youtube.com/@user-nukurobo", "https://unityroom.com/users/usuisio", "https://usuisio.itch.io"]
+  about_label: About
+  about_url: /about/
   footer_links:
     - { label: unityroom, url: "https://unityroom.com/users/usuisio" }
     - { label: itch.io, url: "https://usuisio.itch.io" }
