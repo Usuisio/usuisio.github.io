@@ -1,0 +1,102 @@
+{{ define "head" }}
+<style>
+	:root {
+		--cream: #faf3e7;
+		--card: #fffaf2;
+		--brown: #4a3728;
+		--sub: #8a7361;
+		--orange: #e8843c;
+		--line: #e6d9c3;
+	}
+	* { margin: 0; padding: 0; box-sizing: border-box; }
+	body {
+		background: var(--cream);
+		color: var(--brown);
+		font-family: "Hiragino Maru Gothic ProN", "Yu Gothic UI", sans-serif;
+		line-height: 1.9;
+		padding: 1rem;
+	}
+	.wrap { max-width: 44rem; margin: 0 auto; }
+	a { color: var(--brown); }
+	img { display: block; max-width: 100%; height: auto; }
+
+	.top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; font-size: 0.82rem; color: var(--sub); padding-bottom: 1.5rem; }
+	.top a { color: var(--sub); text-decoration: none; }
+	.top a:hover { color: var(--brown); }
+	.langs { display: flex; gap: 0.5rem; }
+	.langs .on { color: var(--orange); }
+
+	.hero { display: grid; grid-template-columns: 1fr auto; gap: 1.5rem; align-items: center; margin-bottom: 1rem; }
+	h1 { font-size: clamp(1.4rem, 4.5vw, 1.9rem); line-height: 1.6; margin-bottom: 0.6rem; }
+	.mascot { width: clamp(110px, 18vw, 160px); height: auto; }
+	@media (max-width: 560px) { .hero { grid-template-columns: 1fr; } .mascot { margin: 0 auto; order: -1; } }
+	.prose p { margin-bottom: 1.1em; max-width: 38em; }
+
+	h2 { font-size: 1.05rem; font-weight: bold; display: flex; align-items: center; gap: 0.6em; margin: 2.2rem 0 1rem; }
+	h2::before { content: ""; width: 0.5em; height: 0.5em; background: var(--orange); border-radius: 2px; transform: rotate(45deg); flex: none; }
+	h2::after { content: ""; flex: 1; border-top: 2px dashed var(--line); }
+
+	.links { display: grid; gap: 0.7rem; }
+	.link-card { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; background: var(--card); border: 2px solid var(--line); border-radius: 12px; padding: 0.65rem 1rem; text-decoration: none; }
+	.link-card:hover { border-color: var(--orange); }
+	.link-card .l { font-weight: bold; }
+	.link-card .n { font-size: 0.78rem; color: var(--sub); text-align: right; }
+
+	.contact { background: var(--card); border: 2px dashed var(--line); border-radius: 12px; padding: 0.8rem 1.1rem; font-size: 0.95rem; }
+
+	footer { margin-top: 3rem; border-top: 2px dashed var(--line); padding-top: 1.2rem; font-size: 0.85rem; color: var(--sub); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
+	footer a { color: var(--sub); }
+</style>
+{{ end }}
+
+{{ define "main" }}
+{{- $p := .Params }}
+<div class="wrap">
+	<div class="top">
+		<a href="{{ site.Home.Permalink }}">← {{ $p.back_home }}</a>
+		<nav class="langs">
+			<span class="on">{{ site.Language.Label }}</span>
+			{{- range .Translations }}<a href="{{ .Permalink }}">{{ .Language.Label }}</a>{{ end }}
+		</nav>
+	</div>
+
+	<div class="hero">
+		<div>
+			<h1>{{ .Title }}</h1>
+			<div class="prose">{{ .Content }}</div>
+		</div>
+		<img class="mascot" src="/img/mascot.webp" alt="{{ $p.mascot_alt }}" width="700" height="1063">
+	</div>
+
+	<h2>{{ $p.links_title }}</h2>
+	<div class="links">
+		{{- range $p.links }}
+		<a class="link-card" href="{{ .url }}" target="_blank" rel="noopener me">
+			<span class="l">{{ .label }} ↗</span>
+			<span class="n">{{ .note }}</span>
+		</a>
+		{{- end }}
+	</div>
+
+	<h2>{{ $p.contact_title }}</h2>
+	<p class="contact">{{ $p.contact_lead }} <a href="mailto:{{ $p.email }}">{{ $p.email }}</a></p>
+
+	<footer>
+		<a href="{{ site.Home.Permalink }}">← {{ $p.back_home }}</a>
+		<span>© {{ site.Title }}</span>
+	</footer>
+</div>
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "Organization",
+	"name": {{ $p.org_name }},
+	"alternateName": {{ $p.org_alt }},
+	"url": {{ site.Home.Permalink }},
+	"logo": {{ "/img/icon.webp" | absURL }},
+	"email": {{ $p.email }},
+	"description": {{ .Description }},
+	"sameAs": {{ $p.sameas }}
+}
+</script>
+{{ end }}
