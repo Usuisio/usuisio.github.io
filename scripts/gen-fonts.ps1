@@ -13,6 +13,9 @@ foreach ($w in "Medium", "Bold") {
 	$ttf = Join-Path $WorkDir "ZenMaruGothic-$w.ttf"
 	if (-not (Test-Path $ttf)) { curl.exe -sL -o $ttf "$base/ZenMaruGothic-$w.ttf" }
 }
+# Mochiy Pop P One (SIL OFL) — 通せ！連載会議 ページの見出し用（ゲーム本体と同じ書体）
+$mochiy = Join-Path $WorkDir "MochiyPopPOne-Regular.ttf"
+if (-not (Test-Path $mochiy)) { curl.exe -sL -o $mochiy "https://raw.githubusercontent.com/google/fonts/main/ofl/mochiypoppone/MochiyPopPOne-Regular.ttf" }
 
 # 文字集合を組み立てる
 $sb = [System.Text.StringBuilder]::new()
@@ -35,5 +38,7 @@ foreach ($w in "Medium", "Bold") {
 	$out = Join-Path $outDir "ZenMaruGothic-$w-sub.woff2"
 	python -m fontTools.subset $in "--text-file=$glyphs" --flavor=woff2 "--output-file=$out"
 }
+$mochiyOut = Join-Path $outDir "MochiyPopPOne-sub.woff2"
+python -m fontTools.subset $mochiy "--text-file=$glyphs" --flavor=woff2 "--output-file=$mochiyOut"
 curl.exe -sL -o (Join-Path $outDir "OFL.txt") "$base/OFL.txt"
 Get-ChildItem $outDir | Select-Object Name, Length

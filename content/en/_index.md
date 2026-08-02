@@ -7,6 +7,12 @@ params:
   mascot_alt: Nukumori Robot Workshop's mascot — a white rabbit in a work jacket, carrying a wrench
   games_title: Games
   games:
+    - title: 通せ！連載会議 (Tose! Rensai Kaigi)
+      blurb: Bluff your next manga hit into existence — brainstorm with editor Ed, then pitch editor-in-chief Yoru for serialization. About 3 minutes. Japanese only.
+      url: /en/rensai/
+      img: /img/rensai.webp
+      alt: Title screen of Tose! Rensai Kaigi, with manuscript paper and rough sketches on a café table
+      tags: [Browser, Free, New]
     - title: The Mother AI Who Spoils Humanity
       blurb: Place tiles in a 5×5 miniature world and pamper humanity rotten to collect their hearts ❤. A 25-day management sim, about 30 minutes a run.
       url: /en/hitodame/

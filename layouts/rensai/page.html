@@ -1,0 +1,310 @@
+{{ define "head" }}
+<style>
+	@font-face {
+		font-family: "Zen Maru Gothic";
+		src: url("/fonts/ZenMaruGothic-Medium-sub.woff2") format("woff2");
+		font-weight: 500;
+		font-display: swap;
+	}
+	@font-face {
+		font-family: "Zen Maru Gothic";
+		src: url("/fonts/ZenMaruGothic-Bold-sub.woff2") format("woff2");
+		font-weight: 700;
+		font-display: swap;
+	}
+	@font-face {
+		font-family: "Mochiy Pop P One";
+		src: url("/fonts/MochiyPopPOne-sub.woff2") format("woff2");
+		font-weight: 400;
+		font-display: swap;
+	}
+	:root {
+		--desk: #edeae2;
+		--paper: #fcfbf8;
+		--ink: #2f2d2a;
+		--sub: #8a857c;
+		--trim: #b4cfe4;
+		--trim-soft: #d5e4f0;
+		--marker: #f6dd7f;
+		--sticky-yellow: #faeeb5;
+		--sticky-blue: #cfe3f6;
+		--sticky-pink: #f8d7e3;
+		--bubble: #daeee0;
+	}
+	* { margin: 0; padding: 0; box-sizing: border-box; }
+	body {
+		background: var(--desk);
+		color: var(--ink);
+		font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Yu Gothic UI", sans-serif;
+		font-weight: 500;
+		line-height: 1.95;
+	}
+	.wrap { max-width: 54rem; margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2.5rem) 2.5rem; }
+	a { color: #3d6ea5; }
+	img { display: block; max-width: 100%; height: auto; }
+	.pop { font-family: "Mochiy Pop P One", "Zen Maru Gothic", sans-serif; font-weight: 400; }
+
+	/* ---- top ---- */
+	.top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; font-size: 0.82rem; padding: 1rem 0 1.6rem; }
+	.top .home { color: var(--sub); text-decoration: none; }
+	.top .home:hover { color: var(--ink); }
+	.langs { display: flex; gap: 0.4rem; }
+	.langs a, .langs span { border: 1px solid var(--trim); padding: 0 0.8em; text-decoration: none; color: var(--sub); background: var(--paper); }
+	.langs span { background: var(--marker); border-color: var(--marker); color: var(--ink); }
+
+	/* ---- 原稿用紙シート ---- */
+	.sheet {
+		position: relative;
+		background: var(--paper);
+		border: 1px solid var(--trim-soft);
+		box-shadow: 0 3px 14px rgba(90, 80, 60, 0.10);
+		padding: 1.6rem 1.8rem;
+	}
+	.sheet::before, .sheet::after {
+		content: "";
+		position: absolute; width: 15px; height: 15px;
+		background:
+			linear-gradient(var(--trim), var(--trim)) center / 100% 1px no-repeat,
+			linear-gradient(var(--trim), var(--trim)) center / 1px 100% no-repeat;
+		opacity: 0.9;
+	}
+	.sheet::before { top: 7px; left: 7px; }
+	.sheet::after { bottom: 7px; right: 7px; }
+
+	/* ---- hero ---- */
+	.hero { text-align: center; }
+	.hero.sheet { padding: 2.4rem 1.8rem 2rem; }
+	h1 { line-height: 1.25; margin-bottom: 0.3rem; }
+	h1 .tose {
+		display: inline-block;
+		font-size: clamp(1.3rem, 4vw, 1.9rem);
+		background: linear-gradient(0deg, var(--marker) 8%, var(--marker) 82%, transparent 82%);
+		padding: 0 0.55em 0.08em;
+		transform: rotate(-2deg);
+	}
+	h1 .dai { display: block; font-size: clamp(2rem, 6.5vw, 3rem); letter-spacing: 0.06em; }
+	.subtitle { color: var(--sub); font-size: 0.92rem; margin: 0.4rem 0 1.4rem; }
+	.hero-shot { border: 1px solid var(--trim-soft); box-shadow: 0 4px 18px rgba(90, 80, 60, 0.16); margin: 0 auto 1.6rem; }
+	.actions { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; margin-bottom: 0.6rem; }
+	.btn {
+		display: inline-block; text-decoration: none; padding: 0.55em 1.6em;
+		font-size: 1.02rem; color: var(--ink);
+		background: linear-gradient(0deg, var(--marker) 6%, var(--marker) 88%, transparent 88%);
+		transform: rotate(-1.5deg);
+	}
+	.btn:hover { transform: rotate(-1.5deg) translateY(1px); }
+	.free-note { font-size: 0.82rem; color: var(--sub); }
+
+	/* ---- sections ---- */
+	section { margin-top: 3rem; }
+	h2 { font-size: 1.25rem; text-align: center; margin-bottom: 1.4rem; }
+	h2 .hl {
+		display: inline-block;
+		background: linear-gradient(0deg, var(--marker) 8%, var(--marker) 74%, transparent 74%);
+		padding: 0 0.6em 0.1em;
+	}
+
+	/* ---- あらすじ ---- */
+	.prose { max-width: 36em; margin: 0 auto; }
+	.prose.sheet { padding: 2rem 2.2rem; }
+	.prose p { margin-bottom: 1.1em; }
+	.prose p:last-child { margin-bottom: 0; }
+
+	/* ---- あそびかた ---- */
+	.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1.4rem; }
+	.step.sheet { padding: 1.4rem 1.5rem 1.5rem; }
+	.step .tag {
+		display: inline-block; font-size: 0.85rem; padding: 0.1em 0.9em;
+		margin-bottom: 0.6rem; transform: rotate(-2deg);
+		box-shadow: 1px 2px 4px rgba(90, 80, 60, 0.18);
+	}
+	.step:nth-child(1) .tag { background: var(--sticky-blue); }
+	.step:nth-child(2) .tag { background: var(--sticky-pink); }
+	.step h3 { font-size: 1.05rem; margin-bottom: 0.4rem; }
+	.step p { font-size: 0.93rem; }
+	.step-note { max-width: 36em; margin: 1.2rem auto 0; font-size: 0.9rem; color: var(--sub); text-align: center; }
+
+	/* ---- facts ---- */
+	.facts { width: 100%; max-width: 36rem; margin: 0 auto; border-collapse: separate; border-spacing: 0 8px; font-size: 0.93rem; }
+	.facts th, .facts td { text-align: left; padding: 0.35em 1.1em; vertical-align: top; }
+	.facts th {
+		font-weight: 700; white-space: nowrap; width: 8.5em;
+		box-shadow: 1px 2px 4px rgba(90, 80, 60, 0.14);
+	}
+	.facts tr:nth-child(3n+1) th { background: var(--sticky-yellow); }
+	.facts tr:nth-child(3n+2) th { background: var(--sticky-blue); }
+	.facts tr:nth-child(3n) th { background: var(--sticky-pink); }
+	.facts td { background: var(--paper); border: 1px solid var(--trim-soft); }
+
+	/* ---- gallery（コマ割り） ---- */
+	.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1.5rem; }
+	.gallery figure { text-align: center; }
+	.gallery .koma { border: 3px solid var(--ink); background: #fff; }
+	.gallery figure:nth-child(odd) .koma { transform: rotate(-0.5deg); }
+	.gallery figure:nth-child(even) .koma { transform: rotate(0.5deg); }
+	.gallery figcaption {
+		position: relative; display: inline-block;
+		margin-top: 0.9rem; padding: 0.35em 1em;
+		background: var(--bubble); border-radius: 999px;
+		font-size: 0.82rem; text-align: left;
+	}
+	.gallery figcaption::before {
+		content: ""; position: absolute; top: -8px; left: 2em;
+		border: 6px solid transparent; border-bottom-color: var(--bubble); border-top: none;
+	}
+
+	/* ---- 編集部のふたり ---- */
+	.editors { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1.5rem; max-width: 40rem; margin: 0 auto; }
+	.editor.sheet { padding: 1.4rem 1.4rem 1.5rem; text-align: center; }
+	.editor img { width: min(60%, 13rem); margin: 0 auto 0.8rem; }
+	.editor h3 { font-size: 1.05rem; }
+	.editor .role { font-size: 0.8rem; color: var(--sub); margin-bottom: 0.3rem; }
+	.editor p.line { font-size: 0.88rem; text-align: left; }
+
+	/* ---- 主人公3案 ---- */
+	.heroes { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 1.5rem; }
+	.hero-card.sheet { padding: 1.3rem 1.3rem 1.4rem; text-align: center; }
+	.heroes .hero-card:nth-child(1) { transform: rotate(-1.2deg); }
+	.heroes .hero-card:nth-child(3) { transform: rotate(1.2deg); }
+	.hero-card img { height: 13rem; width: auto; margin: 0 auto 0.8rem; }
+	.hero-card h3 { font-size: 1rem; }
+	.hero-card .names { font-size: 0.8rem; color: var(--sub); margin-bottom: 0.3rem; }
+	.hero-card p { font-size: 0.86rem; text-align: left; }
+
+	/* ---- faq ---- */
+	.faq { max-width: 38rem; margin: 0 auto; }
+	.faq dt { font-weight: 700; margin-top: 1.1em; }
+	.faq dt::before { content: "Q. "; background: linear-gradient(0deg, var(--marker) 8%, var(--marker) 74%, transparent 74%); }
+	.faq dd { margin-left: 1.6em; }
+
+	footer { margin-top: 3rem; border-top: 1px dashed var(--trim); padding-top: 1.2rem; font-size: 0.82rem; color: var(--sub); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
+	footer a { color: var(--sub); }
+</style>
+{{ end }}
+
+{{ define "main" }}
+{{- $p := .Params }}
+<div class="wrap">
+	<div class="top">
+		<a class="home" href="{{ site.Home.Permalink }}">{{ $p.back_home }}</a>
+		<nav class="langs">
+			<span>{{ site.Language.Label }}</span>
+			{{- range .Translations }}<a href="{{ .Permalink }}">{{ .Language.Label }}</a>{{ end }}
+		</nav>
+	</div>
+
+	<div class="hero sheet">
+		<h1 class="pop"><span class="tose">{{ $p.title_top }}</span><span class="dai">{{ $p.title_main }}</span></h1>
+		<p class="subtitle">{{ $p.subtitle }}</p>
+		<img class="hero-shot" src="/rensai/title.webp" alt="{{ $p.hero_alt }}" width="1280" height="800">
+		<div class="actions">
+			<a class="btn pop" href="{{ $p.play_url }}">{{ $p.play_label }}</a>
+		</div>
+		<p class="free-note">{{ $p.free_note }}</p>
+	</div>
+
+	<section>
+		<h2 class="pop"><span class="hl">{{ $p.about_title }}</span></h2>
+		<div class="prose sheet">{{ .Content }}</div>
+	</section>
+
+	<section>
+		<h2 class="pop"><span class="hl">{{ $p.flow_title }}</span></h2>
+		<div class="steps">
+			{{- range $p.steps }}
+			<div class="step sheet">
+				<span class="tag pop">{{ .tag }}</span>
+				<h3>{{ .title }}</h3>
+				<p>{{ .body }}</p>
+			</div>
+			{{- end }}
+		</div>
+		<p class="step-note">{{ $p.flow_note }}</p>
+	</section>
+
+	<section>
+		<h2 class="pop"><span class="hl">{{ $p.gallery_title }}</span></h2>
+		<div class="gallery">
+			{{- range $p.gallery }}
+			<figure>
+				<img class="koma" src="{{ .src }}" alt="{{ .alt }}" loading="lazy" width="1280" height="800">
+				<figcaption>{{ .caption }}</figcaption>
+			</figure>
+			{{- end }}
+		</div>
+	</section>
+
+	<section>
+		<h2 class="pop"><span class="hl">{{ $p.editors_title }}</span></h2>
+		<div class="editors">
+			{{- range $p.editors }}
+			<div class="editor sheet">
+				<img src="{{ .img }}" alt="{{ .alt }}" loading="lazy">
+				<h3 class="pop">{{ .name }}</h3>
+				<p class="role">{{ .role }}</p>
+				<p class="line">{{ .line }}</p>
+			</div>
+			{{- end }}
+		</div>
+	</section>
+
+	<section>
+		<h2 class="pop"><span class="hl">{{ $p.heroes_title }}</span></h2>
+		<div class="heroes">
+			{{- range $p.heroes }}
+			<div class="hero-card sheet">
+				<img src="{{ .img }}" alt="{{ .alt }}" loading="lazy">
+				<h3 class="pop">{{ .name }}</h3>
+				<p class="names">{{ .names }}</p>
+				<p>{{ .desc }}</p>
+			</div>
+			{{- end }}
+		</div>
+	</section>
+
+	<section>
+		<h2 class="pop"><span class="hl">{{ $p.facts_title }}</span></h2>
+		<table class="facts">
+			{{- range $p.facts }}
+			<tr><th>{{ .label }}</th><td>{{ .value }}</td></tr>
+			{{- end }}
+		</table>
+	</section>
+
+	<section>
+		<h2 class="pop"><span class="hl">FAQ</span></h2>
+		<dl class="faq">
+			{{- range $p.faq }}
+			<dt>{{ .q }}</dt><dd>{{ .a }}</dd>
+			{{- end }}
+		</dl>
+	</section>
+
+	<footer>
+		<a href="{{ site.Home.Permalink }}">← {{ $p.back_home }}</a>
+		<span>{{ $p.credits }}</span>
+	</footer>
+</div>
+
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "VideoGame",
+	"name": {{ .Title | jsonify }},
+	"alternateName": {{ $p.alt_names | jsonify }},
+	"description": {{ .Description | jsonify }},
+	"url": {{ .Permalink | jsonify }},
+	"image": {{ "/rensai/og-rensai.jpg" | absURL | jsonify }},
+	"inLanguage": ["ja"],
+	"genre": {{ $p.genres | jsonify }},
+	"gamePlatform": "Web browser",
+	"playMode": "SinglePlayer",
+	"applicationCategory": "Game",
+	"operatingSystem": "Web",
+	"datePublished": "2026-08-02",
+	"offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY", "availability": "https://schema.org/InStock" },
+	"author": { "@type": "Organization", "name": {{ $p.dev_name | jsonify }}, "url": {{ site.Home.Permalink | jsonify }} },
+	"sameAs": [ {{ $p.play_url | jsonify }} ]
+}
+</script>
+{{ end }}
