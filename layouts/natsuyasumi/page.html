@@ -1,0 +1,240 @@
+{{ define "head" }}
+<style>
+	@font-face {
+		font-family: "Zen Maru Gothic";
+		src: url("/fonts/ZenMaruGothic-Medium-sub.woff2") format("woff2");
+		font-weight: 500;
+		font-display: swap;
+	}
+	@font-face {
+		font-family: "Zen Maru Gothic";
+		src: url("/fonts/ZenMaruGothic-Bold-sub.woff2") format("woff2");
+		font-weight: 700;
+		font-display: swap;
+	}
+	:root {
+		--sky-top: #8fc3ea;
+		--paper: #fdfaf3;
+		--paper-line: #decfb8;
+		--ink: #4a4239;
+		--label: #a08d75;
+		--sub: #8a7f70;
+		--red: #d4483e;
+		--red-deep: #b53a30;
+		--red-soft: #f8e0dc;
+		--marker: #f6dd7f;
+	}
+	* { margin: 0; padding: 0; box-sizing: border-box; }
+	/* スクロールするほど夕方になる空（ゲームの窓と同じ演出） */
+	body {
+		background: linear-gradient(180deg,
+			#8fc3ea 0%, #a9d3ef 18%, #cfe6f4 34%,
+			#efe7d2 52%, #f4dcae 72%, #eeb984 88%, #e8a06a 100%);
+		color: var(--ink);
+		font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Yu Gothic UI", sans-serif;
+		font-weight: 500;
+		line-height: 1.95;
+	}
+	.wrap { max-width: 54rem; margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2.5rem) 2.5rem; }
+	a { color: var(--red-deep); }
+	img { display: block; max-width: 100%; height: auto; }
+
+	/* ---- top ---- */
+	.top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; font-size: 0.82rem; padding: 1rem 0 1.6rem; }
+	.top .home { color: #3c5a75; text-decoration: none; }
+	.top .home:hover { color: var(--ink); }
+	.langs { display: flex; gap: 0.4rem; }
+	.langs a, .langs span { border-radius: 999px; padding: 0 0.8em; text-decoration: none; color: #3c5a75; background: rgba(255, 255, 255, 0.75); }
+	.langs span { background: var(--red); color: #fff; }
+
+	/* ---- プリント（宿題画面と同じ紙） ---- */
+	.print {
+		background: var(--paper);
+		border-radius: 3px;
+		box-shadow: 0 4px 16px rgba(70, 60, 40, 0.18);
+		padding: 1.6rem 1.9rem 1.8rem;
+	}
+	.print-head {
+		font-size: 0.95rem; color: var(--label); letter-spacing: 0.06em;
+		border-bottom: 1px solid var(--paper-line);
+		padding-bottom: 0.45rem; margin-bottom: 1.3rem;
+	}
+	.print-head b { font-weight: 700; }
+
+	/* ---- hero（タイトルの紙） ---- */
+	.hero { text-align: center; }
+	.hero.print { padding: 2.6rem 1.8rem 2.2rem; transform: rotate(-0.6deg); }
+	h1 {
+		display: inline-block;
+		font-size: clamp(1.5rem, 5vw, 2.4rem);
+		font-weight: 700; line-height: 1.5; letter-spacing: 0.04em;
+		background: linear-gradient(0deg, var(--marker) 10%, var(--marker) 78%, transparent 78%);
+		padding: 0 0.5em 0.1em;
+	}
+	.subtitle { color: var(--sub); font-size: 0.95rem; margin: 0.6rem 0 1.5rem; }
+	.hero-shot { border: 1px solid var(--paper-line); box-shadow: 0 4px 18px rgba(70, 60, 40, 0.18); margin: 0 auto 1.6rem; }
+	.actions { margin-bottom: 0.6rem; }
+	.btn {
+		display: inline-block; text-decoration: none; font-weight: 700;
+		padding: 0.55em 1.8em; border-radius: 6px 6px 10px 10px;
+		background: var(--red); color: #fff; font-size: 1.02rem;
+		box-shadow: 0 3px 0 var(--red-deep); transform: rotate(-1deg);
+	}
+	.btn:hover { transform: rotate(-1deg) translateY(1px); box-shadow: 0 2px 0 var(--red-deep); }
+	.free-note { font-size: 0.82rem; color: var(--sub); }
+
+	section { margin-top: 2.8rem; }
+
+	/* ---- あらすじ ---- */
+	.prose p { margin-bottom: 1.1em; max-width: 36em; }
+	.prose p:last-child { margin-bottom: 0; }
+
+	/* ---- あそびかた ---- */
+	.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1.3rem; margin-bottom: 1rem; }
+	.step h3 { font-size: 1.02rem; margin-bottom: 0.3rem; }
+	.step h3 .num { color: var(--red); }
+	.step p { font-size: 0.92rem; }
+	.flow-note { font-size: 0.92rem; color: var(--red-deep); font-weight: 700; }
+
+	/* ---- 宿題の中身 ---- */
+	.subjects { display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: 1rem; }
+	.subject { border: 1px solid var(--paper-line); border-radius: 4px; padding: 0.7rem 1rem; }
+	.subject h3 { font-size: 0.95rem; color: var(--red-deep); }
+	.subject p { font-size: 0.85rem; }
+	.subjects-note { font-size: 0.85rem; color: var(--sub); margin-top: 0.9rem; }
+
+	/* ---- gallery ---- */
+	.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1.4rem; }
+	.gallery figure { text-align: left; }
+	.gallery img { border: 1px solid var(--paper-line); box-shadow: 0 3px 12px rgba(70, 60, 40, 0.16); }
+	.gallery figcaption { font-size: 0.82rem; margin-top: 0.5rem; }
+	.gallery figcaption::before {
+		content: "○"; color: var(--red); font-weight: 700; margin-right: 0.4em;
+	}
+
+	/* ---- facts（日めくり風） ---- */
+	.facts { width: 100%; border-collapse: separate; border-spacing: 0 6px; font-size: 0.93rem; }
+	.facts th, .facts td { text-align: left; padding: 0.32em 1em; vertical-align: top; }
+	.facts th { color: var(--red-deep); background: var(--red-soft); font-weight: 700; white-space: nowrap; width: 8.5em; border-radius: 4px 0 0 4px; }
+	.facts td { border-bottom: 1px solid var(--paper-line); }
+
+	/* ---- faq ---- */
+	.faq dt { font-weight: 700; margin-top: 1.1em; }
+	.faq dt::before { content: "Q"; display: inline-block; color: var(--red); border: 2px solid var(--red); border-radius: 999px; width: 1.5em; height: 1.5em; line-height: 1.35em; text-align: center; font-size: 0.85em; margin-right: 0.5em; }
+	.faq dd { margin-left: 2.2em; }
+
+	footer { margin-top: 3rem; padding-top: 1.2rem; font-size: 0.82rem; color: #6b4a33; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
+	footer a { color: #6b4a33; }
+</style>
+{{ end }}
+
+{{ define "main" }}
+{{- $p := .Params }}
+<div class="wrap">
+	<div class="top">
+		<a class="home" href="{{ site.Home.Permalink }}">{{ $p.back_home }}</a>
+		<nav class="langs">
+			<span>{{ site.Language.Label }}</span>
+			{{- range .Translations }}<a href="{{ .Permalink }}">{{ .Language.Label }}</a>{{ end }}
+		</nav>
+	</div>
+
+	<div class="hero print">
+		<h1>{{ .Title }}</h1>
+		<p class="subtitle">{{ $p.subtitle }}</p>
+		<img class="hero-shot" src="/natsuyasumi/title.webp" alt="{{ $p.hero_alt }}" width="1280" height="800">
+		<div class="actions">
+			<a class="btn" href="{{ $p.play_url }}">{{ $p.play_label }}</a>
+		</div>
+		<p class="free-note">{{ $p.free_note }}</p>
+	</div>
+
+	<section class="print">
+		<p class="print-head"><b>{{ $p.about_title }}</b> {{ $p.print_suffix }}</p>
+		<div class="prose">{{ .Content }}</div>
+	</section>
+
+	<section class="print">
+		<p class="print-head"><b>{{ $p.flow_title }}</b> {{ $p.print_suffix }}</p>
+		<div class="steps">
+			{{- range $p.steps }}
+			<div class="step">
+				<h3><span class="num">{{ .num }}</span> {{ .title }}</h3>
+				<p>{{ .body }}</p>
+			</div>
+			{{- end }}
+		</div>
+		<p class="flow-note">{{ $p.flow_note }}</p>
+	</section>
+
+	<section class="print">
+		<p class="print-head"><b>{{ $p.subjects_title }}</b> {{ $p.print_suffix }}</p>
+		<div class="subjects">
+			{{- range $p.subjects }}
+			<div class="subject">
+				<h3>{{ .name }}</h3>
+				<p>{{ .desc }}</p>
+			</div>
+			{{- end }}
+		</div>
+		<p class="subjects-note">{{ $p.subjects_note }}</p>
+	</section>
+
+	<section class="print">
+		<p class="print-head"><b>{{ $p.gallery_title }}</b> {{ $p.print_suffix }}</p>
+		<div class="gallery">
+			{{- range $p.gallery }}
+			<figure>
+				<img src="{{ .src }}" alt="{{ .alt }}" loading="lazy" width="1280" height="800">
+				<figcaption>{{ .caption }}</figcaption>
+			</figure>
+			{{- end }}
+		</div>
+	</section>
+
+	<section class="print">
+		<p class="print-head"><b>{{ $p.facts_title }}</b> {{ $p.print_suffix }}</p>
+		<table class="facts">
+			{{- range $p.facts }}
+			<tr><th>{{ .label }}</th><td>{{ .value }}</td></tr>
+			{{- end }}
+		</table>
+	</section>
+
+	<section class="print">
+		<p class="print-head"><b>FAQ</b> {{ $p.print_suffix }}</p>
+		<dl class="faq">
+			{{- range $p.faq }}
+			<dt>{{ .q }}</dt><dd>{{ .a }}</dd>
+			{{- end }}
+		</dl>
+	</section>
+
+	<footer>
+		<a href="{{ site.Home.Permalink }}">← {{ $p.back_home }}</a>
+		<span>{{ $p.credits }}</span>
+	</footer>
+</div>
+
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "VideoGame",
+	"name": {{ .Title | jsonify }},
+	"alternateName": {{ $p.alt_names | jsonify }},
+	"description": {{ .Description | jsonify }},
+	"url": {{ .Permalink | jsonify }},
+	"image": {{ "/natsuyasumi/og-natsuyasumi.jpg" | absURL | jsonify }},
+	"inLanguage": ["ja"],
+	"genre": {{ $p.genres | jsonify }},
+	"gamePlatform": "Web browser",
+	"playMode": "SinglePlayer",
+	"applicationCategory": "Game",
+	"operatingSystem": "Web",
+	"datePublished": "2026-08-12",
+	"offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY", "availability": "https://schema.org/InStock" },
+	"author": { "@type": "Organization", "name": {{ $p.dev_name | jsonify }}, "url": {{ site.Home.Permalink | jsonify }} },
+	"sameAs": [ {{ $p.play_url | jsonify }} ]
+}
+</script>
+{{ end }}

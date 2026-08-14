@@ -7,12 +7,18 @@ params:
   mascot_alt: Nukumori Robot Workshop's mascot — a white rabbit in a work jacket, carrying a wrench
   games_title: Games
   games:
+    - title: 夏の宿題チキンレース！ (Summer Homework Chicken Race)
+      blurb: How long can you put off your summer homework and still finish by August 31? A real-time chicken race with a "days procrastinated" ranking. About 3 minutes. Japanese only.
+      url: /en/natsuyasumi/
+      img: /img/natsuyasumi.webp
+      alt: Title screen of Summer Homework Chicken Race, with the logo and a watermelon on white paper in a tatami room
+      tags: [Browser, Free, New]
     - title: 通せ！連載会議 (Tose! Rensai Kaigi)
       blurb: Bluff your next manga hit into existence — brainstorm with editor Ed, then pitch editor-in-chief Yoru for serialization. About 3 minutes. Japanese only.
       url: /en/rensai/
       img: /img/rensai.webp
       alt: Title screen of Tose! Rensai Kaigi, with manuscript paper and rough sketches on a café table
-      tags: [Browser, Free, New]
+      tags: [Browser, Free]
     - title: The Mother AI Who Spoils Humanity
       blurb: Place tiles in a 5×5 miniature world and pamper humanity rotten to collect their hearts ❤. A 25-day management sim, about 30 minutes a run.
       url: /en/hitodame/
