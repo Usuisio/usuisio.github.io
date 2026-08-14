@@ -14,12 +14,12 @@ params:
   org_alt: Nukumori Robot Workshop
   sameas:
     - https://x.com/ususio0unity
-    - https://youtube.com/@user-nukurobo
+    - https://www.youtube.com/@user-NukuRobo
     - https://unityroom.com/users/usuisio
     - https://usuisio.itch.io
   links:
     - { label: X（Twitter）, url: "https://x.com/ususio0unity", note: 開発の近況 }
-    - { label: YouTube, url: "https://youtube.com/@user-nukurobo", note: 動画 }
+    - { label: YouTube, url: "https://www.youtube.com/@user-NukuRobo", note: 動画 }
     - { label: unityroom, url: "https://unityroom.com/users/usuisio", note: ブラウザ作品の一覧 }
     - { label: itch.io, url: "https://usuisio.itch.io", note: ブラウザ作品 }
     - { label: Steam, url: "https://store.steampowered.com/app/3849320/", note: DoppelTest ストアページ }

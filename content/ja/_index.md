@@ -43,10 +43,12 @@ params:
   gallery_url: /gallery/
   org_name: ぬくもりロボット工房
   org_alt: Nukumori Robot Workshop
-  sameas: ["https://x.com/ususio0unity", "https://youtube.com/@user-nukurobo", "https://unityroom.com/users/usuisio", "https://usuisio.itch.io"]
+  sameas: ["https://x.com/ususio0unity", "https://www.youtube.com/@user-NukuRobo", "https://unityroom.com/users/usuisio", "https://usuisio.itch.io"]
   about_label: 工房について
   about_url: /about/
   footer_links:
+    - { label: X（Twitter）, url: "https://x.com/ususio0unity" }
+    - { label: YouTube, url: "https://www.youtube.com/@user-NukuRobo" }
     - { label: unityroom, url: "https://unityroom.com/users/usuisio" }
     - { label: itch.io, url: "https://usuisio.itch.io" }
     - { label: Steam, url: "https://store.steampowered.com/app/3849320/" }

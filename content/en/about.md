@@ -14,12 +14,12 @@ params:
   org_alt: ぬくもりロボット工房
   sameas:
     - https://x.com/ususio0unity
-    - https://youtube.com/@user-nukurobo
+    - https://www.youtube.com/@user-NukuRobo
     - https://unityroom.com/users/usuisio
     - https://usuisio.itch.io
   links:
     - { label: X (Twitter), url: "https://x.com/ususio0unity", note: dev updates (Japanese) }
-    - { label: YouTube, url: "https://youtube.com/@user-nukurobo", note: videos }
+    - { label: YouTube, url: "https://www.youtube.com/@user-NukuRobo", note: videos }
     - { label: unityroom, url: "https://unityroom.com/users/usuisio", note: browser games (Japanese) }
     - { label: itch.io, url: "https://usuisio.itch.io", note: browser games }
     - { label: Steam, url: "https://store.steampowered.com/app/3849320/", note: DoppelTest store page }
