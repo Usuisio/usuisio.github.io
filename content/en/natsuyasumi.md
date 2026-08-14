@@ -28,7 +28,7 @@ params:
   subjects_title: The homework
   subjects:
     - { name: Japanese, desc: Write the reading of a kanji word in hiragana. }
-    - { name: Math, desc: Addition, subtraction and times tables. }
+    - { name: Math, desc: "Addition, subtraction and times tables." }
     - { name: Science, desc: "Classify the animal — beware trick entries like dolphins and penguins." }
     - { name: Geography, desc: Name the prefecture from a close-up of a blank map. }
   subjects_note: Problems are drawn from pools every run, so each playthrough asks something different.
@@ -56,7 +56,7 @@ params:
     - { label: Streaming, value: "OK (per unityroom's streaming policy)" }
     - { label: Developer, value: Nukumori Robot Workshop }
   faq:
-    - { q: Is it free?, a: Yes — it plays right in your browser on unityroom, free of charge. }
+    - { q: Is it free?, a: "Yes — it plays right in your browser on unityroom, free of charge." }
     - { q: How long is it?, a: "About 3 minutes per run: the 42 days from July 21 to August 31 pass in real time at 3 seconds per day." }
     - { q: Can I play it in English?, a: "The game is currently Japanese only — the questions are Japanese elementary-school material (kanji readings, arithmetic, animal classes, prefectures)." }
     - { q: Is streaming allowed?, a: "Yes (per unityroom's streaming policy)." }

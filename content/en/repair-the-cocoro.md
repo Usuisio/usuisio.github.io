@@ -42,12 +42,12 @@ params:
     - { n: STEP 02, title: Open the console with F12, body: "The game asks you to open the console. Press <code>F12</code> (or right-click → Inspect) to open your browser's developer console." }
     - { n: STEP 03, title: Type the commands, body: "Type <code>CHECK()</code> to run a diagnosis, <code>OPENHATCH()</code> to open her belly hatch, and so on. The on-screen manual shows every command, so you can just copy &amp; paste." }
   faq:
-    - { q: Do I really use the F12 developer console?, a: Yes — that's the whole trick. The console developers normally use becomes your workbench for operating the robot. Every command is listed in the in-game manual, so no programming knowledge is needed. }
-    - { q: Is it free?, a: Yes. It plays in the browser for free, no installation required. }
-    - { q: Can I play on mobile?, a: It's desktop-browser only, because it relies on the developer console. }
-    - { q: How long is it?, a: A short piece, about 15 minutes per playthrough. }
+    - { q: Do I really use the F12 developer console?, a: "Yes — that's the whole trick. The console developers normally use becomes your workbench for operating the robot. Every command is listed in the in-game manual, so no programming knowledge is needed." }
+    - { q: Is it free?, a: "Yes. It plays in the browser for free, no installation required." }
+    - { q: Can I play on mobile?, a: "It's desktop-browser only, because it relies on the developer console." }
+    - { q: How long is it?, a: "A short piece, about 15 minutes per playthrough." }
     - { q: Is there only one ending?, a: "No. The final command you give Cocoro decides how the story ends." }
-    - { q: What languages are supported?, a: Japanese, English and Korean — you choose at the start. }
+    - { q: What languages are supported?, a: "Japanese, English and Korean — you choose at the start." }
   back_home: Nukumori Robot Workshop
   credits: リペア・ザ・ココロ / Repair the Cocoro © Nukumori Robot Workshop
 ---

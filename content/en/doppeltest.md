@@ -24,11 +24,11 @@ params:
     - { label: Genre, value: A watch-over adventure (visual novel + task assignment) }
     - { label: Price, value: ¥580 on Steam (bundle with the soundtrack available) }
     - { label: Platform, value: "PC (Windows 10 or later)" }
-    - { label: Length, value: About 1 hour per route, multiple endings }
-    - { label: Controls, value: Mouse only (assign tasks, advance text) }
+    - { label: Length, value: "About 1 hour per route, multiple endings" }
+    - { label: Controls, value: "Mouse only (assign tasks, advance text)" }
     - { label: Languages, value: Japanese / English }
     - { label: Saving, value: Autosave (continue from the title screen) }
-    - { label: Released, value: March 19, 2026 }
+    - { label: Released, value: "March 19, 2026" }
     - { label: Made by, value: Nukumori Robot Workshop }
   about_title: The Story
   chars_title: The Two "Kagaris"
@@ -40,9 +40,9 @@ params:
   kagami_desc: A kind robot who has gone to school and lived in society in Kagari's place. A clerical error registers Kagami as "the real Kagari", dragging her into the examination.
   steps_title: How to Play
   steps:
-    - { n: MORNING, title: Assign the tasks, body: Decide who handles each task on the to-do list — Kagari does it, Kagami does it, or put it on hold. }
-    - { n: DAYTIME, title: Watch over their day, body: The day unfolds as a story based on your assignments. The same task can go very differently depending on who does it. }
-    - { n: AND THEN, title: The "authenticity" shifts, body: Their actions move the authenticity gauge. After 14 days — or when either side reaches 100% — the story finds its ending. }
+    - { n: MORNING, title: Assign the tasks, body: "Decide who handles each task on the to-do list — Kagari does it, Kagami does it, or put it on hold." }
+    - { n: DAYTIME, title: Watch over their day, body: "The day unfolds as a story based on your assignments. The same task can go very differently depending on who does it." }
+    - { n: AND THEN, title: "The \"authenticity\" shifts", body: "Their actions move the authenticity gauge. After 14 days — or when either side reaches 100% — the story finds its ending." }
   gallery_title: Scenes
   gallery:
     - src: /doppeltest/ss-board.webp
@@ -56,10 +56,10 @@ params:
       caption: The story plays as a visual novel — and the townsfolk are watching over the two as well.
   gallery_more: { label: "→ Gallery: Kagari & Kagami illustrations & concept art", url: "/gallery/doppeltest/" }
   faq:
-    - { q: What kind of game is this?, a: You assign tasks in the morning, then watch over the two characters' day. No hectic controls, no difficult puzzles. }
-    - { q: How long is it?, a: About one hour per route. There are multiple endings, so changing your choices and playing again is part of the fun. }
+    - { q: What kind of game is this?, a: "You assign tasks in the morning, then watch over the two characters' day. No hectic controls, no difficult puzzles." }
+    - { q: How long is it?, a: "About one hour per route. There are multiple endings, so changing your choices and playing again is part of the fun." }
     - { q: Are there branching endings?, a: "Yes — multiple endings. How it branches is yours to find out." }
-    - { q: Is it a competition?, a: No. The two don't fight over being "the real one" — if anything, they keep yielding it to each other. It's a quiet, gentle story. }
+    - { q: Is it a competition?, a: "No. The two don't fight over being \"the real one\" — if anything, they keep yielding it to each other. It's a quiet, gentle story." }
     - { q: Is it voiced?, a: There are no character voices. The theme song is sung by Synthesizer V AI Miyamai Moca. }
     - { q: What languages are supported?, a: Japanese and English. }
 ---

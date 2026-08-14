@@ -41,11 +41,11 @@ params:
       caption: Another side of Poklatte.
   gallery_more: { label: "→ Gallery: Poklatte illustrations & concept art", url: "/gallery/poklatte/" }
   faq:
-    - { q: Is it free?, a: Yes — it plays in the browser for free, on both unityroom and itch.io. }
-    - { q: How long is it?, a: A short piece, about 3 minutes per playthrough. }
+    - { q: Is it free?, a: "Yes — it plays in the browser for free, on both unityroom and itch.io." }
+    - { q: How long is it?, a: "A short piece, about 3 minutes per playthrough." }
     - { q: Is it hard to play?, a: "No — it's mouse clicks only." }
-    - { q: Can I play in English?, a: Yes. Use the LANGUAGE button on the title screen to switch between Japanese and English. }
-    - { q: Can I stream it?, a: Yes, streaming is welcome (per the unityroom streaming policy). }
+    - { q: Can I play in English?, a: "Yes. Use the LANGUAGE button on the title screen to switch between Japanese and English." }
+    - { q: Can I stream it?, a: "Yes, streaming is welcome (per the unityroom streaming policy)." }
 ---
 
 You are an evil genius hacker! You've broken into a mansion said to hide a treasure.

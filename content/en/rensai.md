@@ -81,8 +81,8 @@ params:
     - { label: Streaming, value: "OK (per unityroom's streaming policy)" }
     - { label: Developer, value: Nukumori Robot Workshop }
   faq:
-    - { q: Is it free?, a: Yes — it plays right in your browser on unityroom, free of charge. }
-    - { q: How long is it?, a: About 3 minutes per run. Settings, genres and protagonists reshuffle every time, so it's built for replays. }
+    - { q: Is it free?, a: "Yes — it plays right in your browser on unityroom, free of charge." }
+    - { q: How long is it?, a: "About 3 minutes per run. Settings, genres and protagonists reshuffle every time, so it's built for replays." }
     - { q: Can I play it in English?, a: The game is currently Japanese only. }
     - { q: Is streaming allowed?, a: "Yes (per unityroom's streaming policy)." }
 ---
