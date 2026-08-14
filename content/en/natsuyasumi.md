@@ -24,7 +24,7 @@ params:
     - num: ②
       title: Solve
       body: "The homework is 4 subjects × 3 problems = 12 in total. Type your answers on the keyboard — while the clock keeps running. Finish every problem before August 31 ends and you clear; leave even one and you fail."
-  flow_note: Only those who finish make the "days procrastinated" ranking. The later, the greater.
+  flow_note: Only those who finish make the "days procrastinated" ranking.
   subjects_title: The homework
   subjects:
     - { name: Japanese, desc: Write the reading of a kanji word in hiragana. }
